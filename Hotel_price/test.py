@@ -1,61 +1,73 @@
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 import pandas as pd
+from pymongo import MongoClient
 
-url = 'https://www.booking.com/searchresults.en-gb.html?label=gog235jc-1DCAEoggI46AdIM1gDaGKIAQGYAQm4AQfIAQzYAQPoAQGIAgGoAgO4ApiJ-6UGwAIB0gIkYzI2N2E0ZjAtYmFhOS00YjUzLTliYTUtZjk1NDBlYmMzN2Fj2AIE4AIB&sid=bc9a4cbfda9728a8ab892f66ceaa1a79&aid=397617&ss'
+def scrape_booking_data(offset):
+    # 设置请求头，模拟浏览器访问
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36'
+    }
 
-root = 'https://www.booking.com/searchresults.en-gb.html?label=gog235jc-1DCAEoggI46AdIM1gDaGKIAQGYAQm4AQfIAQzYAQPoAQGIAgGoAgO4ApiJ-6UGwAIB0gIkYzI2N2E0ZjAtYmFhOS00YjUzLTliYTUtZjk1NDBlYmMzN2Fj2AIE4AIB&sid=bc9a4cbfda9728a8ab892f66ceaa1a79&aid=397617&ss' # this is the homepage of the website
-website = f'{root}Hong%20Kong&ssne=Hong%20Kong&ssne_untouched=Hong%20Kong&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1353149&dest_type=city&checkin=2023-08-01&checkout=2023-08-05&group_adults=2&no_rooms=1&group_children=0&offset=1'  # concatenating the homepage with the movies "letter-X" section. You can choose any section (e.g., letter-A, letter-B, ...)
-result = requests.get(website)
-content = result.text
+    # 构造URL，根据不同的offset获取不同的页面数据
+    url = f'https://www.booking.com/xxx?offset={offset}'
 
-soup = BeautifulSoup(content, 'lxml')
+    # 发送GET请求，获取页面内容
+    response = requests.get(url, headers=headers)
 
-#Pagination
-pagination = soup.find('ol', class_='a8b500abde')
-pages = pagination.find_all('li', class_='f32a99c8d1')
-last_page = pages[-2].text
+    # 解析HTML内容
+    soup = BeautifulSoup(response.content, 'html.parser')
 
-# for page in range(1, int(last_page)+1):
-
-# Find all the hotel elements in the HTML document
-hotels = soup.findAll('div', {'data-testid': 'property-card'})
-
-for page in range(1, int(last_page)+1):
-    result = requests.get(f'{root}Hong%20Kong&ssne=Hong%20Kong&ssne_untouched=Hong%20Kong&lang=en-gb&sb=1&src_elem=sb&src=searchresults&dest_id=-1353149&dest_type=city&checkin=2023-08-01&checkout=2023-08-05&group_adults=2&no_rooms=1&group_children=0&offset=1')
-    content = result.text
-    soup = BeautifulSoup(content, 'lxml')
-
-    hotels = soup.findAll('div', {'data-testid': 'property-card'})
-
-hotels_data = []
-# Loop over the hotel elements and extract the desired data
-for hotel in hotels:
+    # 找到需要的数据，如名字、位置、评级和价格
     # Extract the hotel name
-    name_element = hotel.find('div', {'data-testid': 'title'})
-    name = name_element.text.strip()
+    name_element = soup.find('div', {'data-testid': 'title'})
+    names = name_element.text.strip()
 
     # Extract the hotel location
-    location_element = hotel.find('span', {'data-testid': 'address'})
-    location = location_element.text.strip()
+    location_element = soup.find('span', {'data-testid': 'address'})
+    locations = location_element.text.strip()
 
     # Extract the hotel price
-    price_element = hotel.find('span', {'data-testid': 'price-and-discounted-price'})
-    price = price_element.text.strip()
+    price_element = soup.find('span', {'data-testid': 'price-and-discounted-price'})
+    prices = price_element.text.strip().replace(u'\xa0', u' ')
 
     # Extract the hotel rating
-    rating_element = hotel.find('div', {'class': 'b5cd09854e d10a6220b4'})
-    rating = rating_element.text.strip()
+    rating_element = soup.find('div', {'class': 'a3b8729ab1 d86cee9b25'})
+    ratings = rating_element.text.strip()
 
-    # Append hotes_data with info about hotel
-    hotels_data.append({
-        'name': name,
-        'location': location,
-        'price': price,
-        'rating': rating
-    })
+    # Time period
+    time_element = soup.find('div', {'class': 'c1bae49f17'})
+    times = time_element.text.strip()
 
-hotels = pd.DataFrame(hotels_data)
-hotels.head()
+    # 存储数据到CSV文件
+    data = {
+        'Name': names,
+        'Location': locations,
+        'Rating': ratings,
+        'Price': prices,
+        'Time': times,
+    }
+    df = pd.DataFrame(data)
+    df.to_csv('booking_data.csv', mode='a', header=False, index=False)
 
-hotels.to_csv('bs_hotels.csv', header=True, index=False)
+    # 存储数据到MongoDB
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['booking']
+    collection = db['data']
+    for i in range(len(names)):
+        entry = {
+            'Name': names[i].text.strip(),
+            'Location': locations[i].text.strip(),
+            'Rating': ratings[i].text.strip(),
+            'Price': prices[i].text.strip(),
+        }
+        collection.insert_one(entry)
+
+# 设置初始offset和每页的偏移量
+initial_offset = 0
+offset_increment = 25
+
+# 爬取首十页的数据
+for page in range(10):
+    offset = initial_offset + page * offset_increment
+    scrape_booking_data(offset)
