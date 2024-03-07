@@ -5,14 +5,14 @@ const app = express();
 const port = 3000;
 
 // MongoDB连接字符串
-const mongoURI = 'mongodb://localhost:27017/dashboard';
+const mongoURI = 'mongodb+srv://qq1027784227:<password>@hotel.0a4is7r.mongodb.net/';
 
 // 连接到MongoDB数据库
 mongodb.MongoClient.connect(mongoURI, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to MongoDB');
-    const db = client.db('dashboard');
-    const collection = db.collection('data');
+    const db = client.db('Hotel');
+    const collection = db.collection('user');
 
     // 定义API路由
     app.get('/api/data', (req, res) => {
