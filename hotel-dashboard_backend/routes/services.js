@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // MongoDB连接字符串
-const mongoURI = 'mongodb+srv://qq1027784227:<password>@hotel.0a4is7r.mongodb.net/';
+const mongoURI = 'mongodb+srv://qq1027784227:qq1027784227@hotel.0a4is7r.mongodb.net/';
 
 // 连接到MongoDB数据库
 mongodb.MongoClient.connect(mongoURI, { useUnifiedTopology: true })
