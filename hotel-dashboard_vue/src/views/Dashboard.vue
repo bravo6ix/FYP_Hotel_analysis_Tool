@@ -190,22 +190,31 @@
       };
     },
     methods: {
-      initBigChart(index) {
-        let chartData = {
-          datasets: [
-            {
-              label: 'Performance',
-              data: this.bigLineChart.allData[index]
-            }
-          ],
-          labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        };
-        this.bigLineChart.chartData = chartData;
-        this.bigLineChart.activeIndex = index;
+      // initBigChart(index) {
+      //   let chartData = {
+      //     datasets: [
+      //       {
+      //         label: 'Performance',
+      //         data: this.bigLineChart.allData[index]
+      //       }
+      //     ],
+      //     labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      //   };
+      //   this.bigLineChart.chartData = chartData;
+      //   this.bigLineChart.activeIndex = index;
+      // }
+      async fetchData() {
+        try {
+          const response = await axios.get('/api/data');
+          this.bigLineChart = response.data;
+        } catch (error) {
+          console.error(error);
+        }
       }
     },
     mounted() {
-      this.initBigChart(0);
+      //this.initBigChart(0);
+      this.fetchData();
     }
   };
 </script>

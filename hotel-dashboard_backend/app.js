@@ -4,8 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
+const servicesRouter = require('./routes/services');
 
 var app = express();
 
@@ -19,8 +22,32 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(
+  cors({
+      origin: 'http://localhost:8080',
+      preflightContinue: true,
+  }),
+);
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/services', servicesRouter);
+
+// mongoDB connection
+const mongodb = require('mongodb');
+const MongoClient = mongodb.MongoClient;
+const mongoURI = 'mongodb+srv://qq1027784227:qq1027784227@hotel.0a4is7r.mongodb.net/';
+const client = new MongoClient(mongoURI, { useUnifiedTopology: true });
+app.locals.db = client.db('Hotel');
+
+// connect to mongoDB
+client.connect(function(err) {
+  if (err) {
+    console.log('Failed to connect to MongoDB', err);
+  } else {
+    console.log('Connected to MongoDB');
+  }
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

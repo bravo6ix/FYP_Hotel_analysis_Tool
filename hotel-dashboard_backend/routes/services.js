@@ -11,8 +11,8 @@ const mongoURI = 'mongodb+srv://qq1027784227:qq1027784227@hotel.0a4is7r.mongodb.
 mongodb.MongoClient.connect(mongoURI, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to MongoDB');
-    const db = client.db('Hotel');
-    const collection = db.collection('user');
+    const db = client.db('hotels');
+    const collection = db.collection('booking_price');
 
     // 定义API路由
     app.get('/api/data', (req, res) => {

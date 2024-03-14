@@ -43,6 +43,7 @@
 </template>
 <script>
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
+  import axios from 'axios';
   export default {
     name: 'page-visits-table',
     components: {
@@ -87,7 +88,10 @@
           }
         ]
       }
+      
+
     }
+
   }
 </script>
 <style>
