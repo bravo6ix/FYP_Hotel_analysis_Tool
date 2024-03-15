@@ -11,7 +11,7 @@ const client = new MongoClient(url);
 const db = client.db("hotels");
 
 
-/* GET all collection booking_price data */
+/* GET all booking_price collection data */
 router.get('/data', async function (req, res, next) {
     try {
         const result = await db.collection("booking_price").find({}).toArray();
