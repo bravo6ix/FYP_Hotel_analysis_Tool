@@ -9,6 +9,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const servicesRouter = require('./routes/services');
+const testRouter = require('./routes/test');
+const cors = require('cors')
 
 var app = express();
 
@@ -32,13 +34,14 @@ app.use(
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/services', servicesRouter);
+app.use('/api/test', testRouter);
 
 // mongoDB connection
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const mongoURI = 'mongodb+srv://qq1027784227:qq1027784227@hotel.0a4is7r.mongodb.net/';
-const client = new MongoClient(mongoURI, { useUnifiedTopology: true });
-app.locals.db = client.db('Hotel');
+const client = new MongoClient(mongoURI);
+app.locals.db = client.db('hotls');
 
 // connect to mongoDB
 client.connect(function(err) {
