@@ -161,10 +161,11 @@
     data() {
       return {
         bigLineChart: {
-          allData: [
-            [0, 20, 10, 30, 15, 40, 20, 60, 60],
-            [0, 20, 5, 25, 10, 30, 15, 40, 40]
-          ],
+          allData:[],
+          // allData: [
+          //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
+          //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
+          // ],
           activeIndex: 0,
           chartData: {
             datasets: [
@@ -189,31 +190,47 @@
         }
       };
     },
+    created() {
+      this.fetchDataFromMongoDB();
+    },
     methods: {
-      // initBigChart(index) {
-      //   let chartData = {
-      //     datasets: [
-      //       {
-      //         label: 'Performance',
-      //         data: this.bigLineChart.allData[index]
-      //       }
-      //     ],
-      //     labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      //   };
-      //   this.bigLineChart.chartData = chartData;
-      //   this.bigLineChart.activeIndex = index;
-      // }
-      async fetchData() {
+      initBigChart(index) {
+        let chartData = {
+          datasets: [
+            {
+              label: 'Performance',
+              data: this.bigLineChart.allData[index]
+            }
+          ],
+          labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        };
+        this.bigLineChart.chartData = chartData;
+        this.bigLineChart.activeIndex = index;
+      },
+      async fetchDataFromMongoDB() {
         try {
-          const response = await axios.get('/api/data');
-          this.bigLineChart = response.data;
+          const response = await axios.get('/api/services/data');
+          this.mongoData = response.data;
+
+          const sumDataByMonth = mongoData.reduce((acc, curr) => {
+            const monthIndex = acc.findIndex(item => item[0] === curr.month);
+            if (monthIndex !== -1) {
+              acc[monthIndex][1] += curr.price;
+            } else {
+              acc.push([curr.month, curr.price]);
+            }
+            return acc;
+          }, []);
+          const bigLineChart = Object.values(sumDataByMonth);
+
+          this.allData = sumDataByMonth;
         } catch (error) {
-          console.error(error);
+          console.error('Error fetching booking prices', error);
         }
-      }
+      },
     },
     mounted() {
-      //this.initBigChart(0);
+      this.initBigChart(0);
       this.fetchData();
     }
   };
