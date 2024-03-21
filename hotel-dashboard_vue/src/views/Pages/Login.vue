@@ -93,6 +93,7 @@
 <script>
 import axios from 'axios';
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import JwtDecode from "jwt-decode";
 
 export default {
   components: {
@@ -110,18 +111,16 @@ export default {
   },
   methods: {
     async onSubmit() {
-      // this will be called only after form is valid. You can do api call here to login
       try {
         const response = await axios.post('http://localhost:3001/api/users/login', {
           username: this.model.email,
           password: this.model.password,
         });
         localStorage.setItem('token', response.data.token);
-        // Redirect to dashboard or other page
         this.$router.push('/dashboard');
       } catch (error) {
         console.error('Error logging in:', error);
-        // Handle login error (e.g., show error message to user)
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
       }
     },
   },
