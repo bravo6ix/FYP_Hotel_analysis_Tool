@@ -20,30 +20,41 @@ const db = client.db("hotels");
 
 /* User Login */
 router.post("/login", async function (req, res, next) {
-    let user = req.body;
-
     try {
-        // Find user with requested email
-        let userFromDb = await db.collection("user").findOne({ email: user.email });
-        if (!userFromDb) {
-            return res.status(400).send("User not found");
+        const { email, password } = req.body;
+        const result = await db.collection("user").findOne({ email: email });
+        if (result) {
+            if (bcrypt.compareSync(password, result.password)) {
+                const token = jwt.sign(
+                    {
+                        email: result.email,
+                        userId: result._id,
+                        name: result.name
+                    },
+                    "process.env.TOKEN_KEY",
+                    { expiresIn: "1h" }
+                );
+                return res.status(200).json({ token: token });
+            }
         }
-
-        // Compare passwords
-        let passwordMatch = bcrypt.compareSync(user.password, userFromDb.password);
-        if (!passwordMatch) {
-            return res.status(400).send("Invalid password");
-        }
-
-        // Create JWT
-        let token = jwt.sign({ email: userFromDb.email }, 'process.env.TOKEN_KEY', { expiresIn: '1h' });
-
-        // Send back token
-        res.json({ token: token });
+        return res.status(401).json({ error: "Invalid email or password" });
     } catch (error) {
-        next(error);
+        console.error('Error logging in:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 
+// Get User by ID
+router.get("/:id", async function (req, res, next) {
+    try {
+        const result = await db.collection("user").findOne({ _id: new ObjectId(req.params.id) });
+        res.json(result);
+    } catch (error) {
+        console.error('Error retrieving user:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+require('crypto').randomBytes(64).toString('hex')
 
 module.exports = router;
