@@ -5,11 +5,7 @@
       <!-- Card stats -->
       <b-row>
         <b-col xl="3" md="6">
-          <stats-card title="Total traffic"
-                      type="gradient-red"
-                      sub-title="350,897"
-                      icon="ni ni-active-40"
-                      class="mb-4">
+          <stats-card title="Total traffic" type="gradient-red" sub-title="350,897" icon="ni ni-active-40" class="mb-4">
 
             <template slot="footer">
               <span class="text-success mr-2">3.48%</span>
@@ -18,11 +14,8 @@
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
-          <stats-card title="Total traffic"
-                      type="gradient-orange"
-                      sub-title="2,356"
-                      icon="ni ni-chart-pie-35"
-                      class="mb-4">
+          <stats-card title="Total traffic" type="gradient-orange" sub-title="2,356" icon="ni ni-chart-pie-35"
+            class="mb-4">
 
             <template slot="footer">
               <span class="text-success mr-2">12.18%</span>
@@ -31,11 +24,7 @@
           </stats-card>
         </b-col>
         <b-col xl="3" md="6">
-          <stats-card title="Sales"
-                      type="gradient-green"
-                      sub-title="924"
-                      icon="ni ni-money-coins"
-                      class="mb-4">
+          <stats-card title="Sales" type="gradient-green" sub-title="924" icon="ni ni-money-coins" class="mb-4">
 
             <template slot="footer">
               <span class="text-danger mr-2">5.72%</span>
@@ -45,11 +34,8 @@
 
         </b-col>
         <b-col xl="3" md="6">
-          <stats-card title="Performance"
-                      type="gradient-info"
-                      sub-title="49,65%"
-                      icon="ni ni-chart-bar-32"
-                      class="mb-4">
+          <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
+            class="mb-4">
 
             <template slot="footer">
               <span class="text-success mr-2">54.8%</span>
@@ -72,31 +58,21 @@
               </b-col>
               <b-col>
                 <b-nav class="nav-pills justify-content-end">
-                  <b-nav-item
-                       class="mr-2 mr-md-0"
-                       :active="bigLineChart.activeIndex === 0"
-                       link-classes="py-2 px-3"
-                       @click.prevent="initBigChart(0)">
-                      <span class="d-none d-md-block">Month</span>
-                      <span class="d-md-none">M</span>
+                  <b-nav-item class="mr-2 mr-md-0" :active="bigLineChart.activeIndex === 0" link-classes="py-2 px-3"
+                    @click.prevent="initBigChart(0)">
+                    <span class="d-none d-md-block">Month</span>
+                    <span class="d-md-none">M</span>
                   </b-nav-item>
-                  <b-nav-item
-                    link-classes="py-2 px-3"
-                    :active="bigLineChart.activeIndex === 1"
-                    @click.prevent="initBigChart(1)"
-                  >
+                  <b-nav-item link-classes="py-2 px-3" :active="bigLineChart.activeIndex === 1"
+                    @click.prevent="initBigChart(1)">
                     <span class="d-none d-md-block">Week</span>
                     <span class="d-md-none">W</span>
                   </b-nav-item>
                 </b-nav>
               </b-col>
             </b-row>
-            <line-chart
-              :height="350"
-              ref="bigChart"
-              :chart-data="bigLineChart.chartData"
-              :extra-options="bigLineChart.extraOptions"
-            >
+            <line-chart :height="350" ref="bigChart" :chart-data="bigLineChart.chartData"
+              :extra-options="bigLineChart.extraOptions">
             </line-chart>
           </card>
         </b-col>
@@ -110,11 +86,7 @@
               </b-col>
             </b-row>
 
-            <bar-chart
-              :height="350"
-              ref="barChart"
-              :chart-data="redBarChart.chartData"
-            >
+            <bar-chart :height="350" ref="barChart" :chart-data="redBarChart.chartData">
             </bar-chart>
           </card>
         </b-col>
@@ -136,107 +108,131 @@
   </div>
 </template>
 <script>
-  // Charts
-  import * as chartConfigs from '@/components/Charts/config';
-  import LineChart from '@/components/Charts/LineChart';
-  import BarChart from '@/components/Charts/BarChart';
+import axios from 'axios';
 
-  // Components
-  import BaseProgress from '@/components/BaseProgress';
-  import StatsCard from '@/components/Cards/StatsCard';
+// Charts
+import * as chartConfigs from '@/components/Charts/config';
+import LineChart from '@/components/Charts/LineChart';
+import BarChart from '@/components/Charts/BarChart';
 
-  // Tables
-  import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-  import PageVisitsTable from './Dashboard/PageVisitsTable';
+// Components
+import BaseProgress from '@/components/BaseProgress';
+import StatsCard from '@/components/Cards/StatsCard';
 
-  export default {
-    components: {
-      LineChart,
-      BarChart,
-      BaseProgress,
-      StatsCard,
-      PageVisitsTable,
-      SocialTrafficTable
-    },
-    data() {
-      return {
-        bigLineChart: {
-          allData:[],
-          // allData: [
-          //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
-          //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
-          // ],
-          // activeIndex: 0,
-          chartData: {
-            datasets: [
-              {
-                label: 'Performance',
-                data: [0, 20, 10, 30, 15, 40, 20, 60, 60],
-              }
-            ],
-            labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          },
-          extraOptions: chartConfigs.blueChartOptions,
+// Tables
+import SocialTrafficTable from './Dashboard/SocialTrafficTable';
+import PageVisitsTable from './Dashboard/PageVisitsTable';
+
+export default {
+  components: {
+    LineChart,
+    BarChart,
+    BaseProgress,
+    StatsCard,
+    PageVisitsTable,
+    SocialTrafficTable
+  },
+  data() {
+    return {
+      bigLineChart: {
+        // allData: [
+        //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
+        //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
+        // ],
+        // activeIndex: 0,
+        allData: [],
+        chartData: null,
+        activeIndex: 0,
+        extraOptions: null,
+
+        // chartData: {
+        //   datasets: [
+        //     {
+        //       label: 'Performance',
+        //       data: [0, 20, 10, 30, 15, 40, 20, 60, 60],
+        //     }
+        //   ],
+        //   labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        // },
+        // extraOptions: chartConfigs.blueChartOptions,
+      },
+      redBarChart: {
+        chartData: {
+          labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Sales',
+            data: [25, 20, 30, 22, 17, 29]
+          }]
         },
-        redBarChart: {
-          chartData: {
-            labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-              label: 'Sales',
-              data: [25, 20, 30, 22, 17, 29]
-            }]
-          },
-          extraOptions: chartConfigs.blueChartOptions
-        }
-      };
-    },
-    created() {
-      this.fetchDataFromMongoDB();
-    },
-    methods: {
-      initBigChart(index) {
-        let chartData = {
-          datasets: [
-            {
-              label: 'Performance',
-              data: this.bigLineChart.allData[index]
-            }
-          ],
-          labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        };
-        this.bigLineChart.chartData = chartData;
-        this.bigLineChart.activeIndex = index;
-      },
-      async fetchDataFromMongoDB() {
-        try {
-          const response = await axios.get('/api/services/data');
-          this.mongoData = response.data;
+        extraOptions: chartConfigs.blueChartOptions
+      }
+    };
+  },
 
-          const sumDataByMonth = mongoData.reduce((acc, curr) => {
-            const monthIndex = acc.findIndex(item => item[0] === curr.month);
-            if (monthIndex !== -1) {
-              acc[monthIndex][1] += curr.price;
-            } else {
-              acc.push([curr.month, curr.price]);
-            }
-            return acc;
-          }, []);
-          const bigLineChart = Object.values(sumDataByMonth);
+  // methods: {
+  //   initBigChart(index) {
+  //     let chartData = {
+  //       datasets: [
+  //         {
+  //           label: 'Performance',
+  //           data: this.bigLineChart.allData[index]
+  //         }
+  //       ],
+  //       labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  //     };
+  //     this.bigLineChart.chartData = chartData;
+  //     this.bigLineChart.activeIndex = index;
+  //   },
 
-          this.allData = sumDataByMonth;
-        } catch (error) {
-          console.error('Error fetching booking prices', error);
-        }
-      },
-    },
-    mounted() {
-      this.initBigChart(0);
-      this.fetchData();
+  // methods: {
+  //   initBigChart() {
+  //     const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  //     let chartData = {
+  //       datasets: [{
+  //         label: 'Performance',
+  //         data: this.bigLineChart.allData.map(item => item.totalAmount)
+  //       }],
+  //       labels: this.bigLineChart.allData.map(item => item.month),
+  //     };
+  //     this.bigLineChart.chartData = chartData;
+  //   },
+  // },
+
+  methods: {
+  initBigChart() {
+    const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let chartData = {
+      datasets: [{
+        label: 'Performance',
+        data: labels.map(label => {
+          const item = this.bigLineChart.allData.find(data => data.month === label);
+          return item ? item.totalAmount : 0;
+        })
+      }],
+      labels: labels,
+    };
+    this.bigLineChart.chartData = chartData;
+  },
+},
+
+  async created() {
+    try {
+      const response = await axios.get('http://localhost:3001/api/services/month-sum-price');
+      this.bigLineChart.allData = response.data;
+      this.initBigChart();
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
-  };
+  },
+  mounted() {
+    if (!this.bigLineChart.allData.length) {
+      this.initBigChart();
+    }
+  },
+};
 </script>
 <style>
-.el-table .cell{
+.el-table .cell {
   padding-left: 0px;
   padding-right: 0px;
 }

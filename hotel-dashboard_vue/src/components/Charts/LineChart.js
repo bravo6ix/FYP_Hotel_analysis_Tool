@@ -12,7 +12,7 @@ export default {
   },
   data() {
     return {
-      ctx: null
+      data: null,
     };
   },
   mounted() {
@@ -25,5 +25,6 @@ export default {
       },
       { immediate: true }
     );
-  }
+  },
+
 };

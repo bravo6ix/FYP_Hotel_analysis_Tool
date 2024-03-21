@@ -22,8 +22,8 @@ const db = client.db("hotels");
 router.post("/login", async function (req, res, next) {
     let user = req.body;
     try {
-        const result = await db.collection("users").findOne({
-            username: user.username,
+        const result = await db.collection("user").findOne({
+            email: user.email,
         });
         if (result) {
             const match = bcrypt.compareSync(user.password, result.password);
@@ -32,9 +32,8 @@ router.post("/login", async function (req, res, next) {
                 const user = {};
                 const token = jwt.sign(
                     {
-                        user_id: req.body.email,
-                        username: result.username,
-                        role: result.role,
+                        email: result.email,
+                        usergroup: result.usergroup,
                     },
                     "process.env.TOKEN_KEY",
                     {
@@ -61,7 +60,7 @@ router.get("/get/:id", auth, async function (req, res, next) {
     if (!ObjectId.isValid(req.params.id))
         return res.status(404).send("Unable to find the requested resource!");
 
-    let result = await db.collection("users").findOne({ _id: new ObjectId(req.params.id) });
+    let result = await db.collection("user").findOne({ _id: new ObjectId(req.params.id) });
     if (!result)
         return res.status(404).send("Unable to find the requested resource!");
 
@@ -78,7 +77,7 @@ router.get('/get/role/:role', auth, async function (req, res, next) {
         return res.status(403).send("Not allowed to access!");
 
     console.log(req.params.role);
-    let result = await db.collection("users").find({ role: req.params.role }).toArray();
+    let result = await db.collection("user").find({ role: req.params.role }).toArray();
     if (!result) return res.status(404).send('Unable to find the requested resource!');
 
     return res.json({ items: result })
@@ -95,7 +94,7 @@ router.put("/update/:id", auth, async function (req, res) {
             const hash = bcrypt.hashSync(req.body.password, salt);
             req.body.password = hash;
             try {
-                const result = await db.collection('users').findOneAndReplace(
+                const result = await db.collection('user').findOneAndReplace(
                     { _id: new ObjectId(req.params.id) },
                     req.body
                 );
@@ -106,7 +105,7 @@ router.put("/update/:id", auth, async function (req, res) {
                 return res.status(500).send(e);
             }
         } else {
-            const result = await db.collection('users').findOneAndReplace(
+            const result = await db.collection('user').findOneAndReplace(
                 { _id: new ObjectId(req.params.id) },
                 req.body
             );
@@ -132,13 +131,13 @@ router.post("/create", auth, async function (req, res, next) {
     delete loggedUser.exp;
 
     if (loggedUser.role === 'admin')
-        return res.status(403).send("Not allowed to create users!");
+        return res.status(403).send("Not allowed to create user!");
 
     let user = req.body;
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(user.password, salt);
     try {
-        const result = await db.collection("users").insertOne({
+        const result = await db.collection("user").insertOne({
             username: user.username,
             password: hash,
             role: user.role,
