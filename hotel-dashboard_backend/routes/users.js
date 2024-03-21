@@ -36,10 +36,10 @@ router.post("/login", async function (req, res, next) {
         }
 
         // Create JWT
-        let token = jwt.sign({ id: userFromDb._id }, 'your-secret-key', { expiresIn: '1h' });
+        let token = jwt.sign({ email: userFromDb.email }, 'process.env.TOKEN_KEY', { expiresIn: '1h' });
 
-        // Send back token and user data
-        res.json({ token: token, user: { email: userFromDb.email, role: userFromDb.role } });
+        // Send back token
+        res.json({ token: token });
     } catch (error) {
         next(error);
     }
