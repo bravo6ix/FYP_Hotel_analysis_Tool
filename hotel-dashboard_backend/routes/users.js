@@ -19,28 +19,7 @@ const client = new MongoClient(url);
 const db = client.db("hotels");
 
 /* User Login */
-router.post("/login", async function (req, res, next) {
-    try {
-        const { email, password } = req.body;
-        const result = await db.collection("user").findOne({ email: email });
-        if (result) {
-            if (bcrypt.compareSync(password, result.password)) {
-                const token = jwt.sign(
-                    {
-                        email: result.email,
-                    },
-                    "process.env.TOKEN_KEY",
-                    { expiresIn: "1h" }
-                );
-                return res.status(200).json({ token: token });
-            }
-        }
-        return res.status(401).json({ error: "Invalid email or password" });
-    } catch (error) {
-        console.error('Error logging in:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+
 
 // Get User by ID
 router.get("/:id", async function (req, res, next) {
