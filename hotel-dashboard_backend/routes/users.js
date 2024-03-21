@@ -28,8 +28,6 @@ router.post("/login", async function (req, res, next) {
                 const token = jwt.sign(
                     {
                         email: result.email,
-                        userId: result._id,
-                        name: result.name
                     },
                     "process.env.TOKEN_KEY",
                     { expiresIn: "1h" }
@@ -54,7 +52,5 @@ router.get("/:id", async function (req, res, next) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
-require('crypto').randomBytes(64).toString('hex')
 
 module.exports = router;
