@@ -8,9 +8,9 @@ const { v4: uuidv4 } = require("uuid");
 
 /* bcrypt */
 const bcrypt = require("bcrypt");
-// const saltRounds = 10;
+const saltRounds = 10;
 
-/* MongoDB Client */
+/* mongodb */
 const { MongoClient } = require("mongodb");
 let ObjectId = require("mongodb").ObjectId;
 const url =
@@ -18,35 +18,90 @@ const url =
 const client = new MongoClient(url);
 const db = client.db("hotels");
 
-/* User Login */
-router.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+/* GET users listing. */
+router.get("/", function (req, res, next) {
+  res.send("respond with a resource");
+});
 
-    try {
-      // 获取数据库集合实例
-      const usersCollection = db.collection('users');
+/* GET users listing. */
 
-      // 在集合中查找匹配的用户
-      const user = await usersCollection.findOne({ username });
+/* GET all users */
+router.get("/all-users", async function (req, res, next) {
+  try {
+    const result = await db.collection("users").find({}).toArray();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
 
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+/* GET user by id */
+router.get("/:id", async function (req, res, next) {
+  try {
+    const result = await db
+      .collection("users")
+      .find({ _id: ObjectId(req.params.id) })
+      .toArray();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+/* GET user by email */
+router.get("/email/:email", async function (req, res, next) {
+  try {
+    const result = await db
+      .collection("users")
+      .find({ email: req.params.email })
+      .toArray();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+/* GET user by username */
+router.get("/username/:username", async function (req, res, next) {
+  try {
+    const result = await db
+      .collection("users")
+      .find({ username: req.params.username })
+      .toArray();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
+/* POST user login */
+router.post("/login",  async function (req, res, next) {
+  try {
+    const result = await db
+      .collection("users")
+      .find({ email: req.body.email })
+      .toArray();
+    if (result.length > 0) {
+      if (bcrypt.compareSync(req.body.password, result[0].password)) {
+        const token = jwt.sign(
+          {
+            userId: result[0]._id,
+            email: result[0].email,
+            username: result[0].username,
+          },
+          process.env.ACCESS_TOKEN_SECRET,
+          { expiresIn: "1h" }
+        );
+        return res.status(200).json({ token: token });
+      } else {
+        return res.status(401).json({ error: "Invalid password" });
       }
-
-      // 验证密码
-      const passwordMatch = await bcrypt.compare(password, user.password);
-
-      if (!passwordMatch) {
-        return res.status(401).json({ message: 'Invalid password' });
-      }
-
-      // 登录成功
-      res.status(200).json({ message: 'Login successful' });
-    } catch (err) {
-      console.error('Login error', err);
-      res.status(500).json({ message: 'Internal server error' });
+    } else {
+      return res.status(404).json({ error: "User not found" });
     }
-  });
-
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
 
 module.exports = router;
