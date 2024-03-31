@@ -23,11 +23,13 @@
             </template>
           </stats-card>
         </b-col>
+        
+        <!-- new alter for avg price change -->
         <b-col xl="3" md="6">
-          <stats-card title="Sales" type="gradient-green" sub-title="924" icon="ni ni-money-coins" class="mb-4">
-
+          <stats-card title="Price increase from January to February" type="gradient-green" :sub-title="priceDifference"
+            icon="ni ni-money-coins" class="mb-4">
             <template slot="footer">
-              <span class="text-danger mr-2">5.72%</span>
+              <span class="text-danger mr-2">{{ priceIncrease }}%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
@@ -54,7 +56,7 @@
             <b-row align-v="center" slot="header">
               <b-col>
                 <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6>
-                <h5 class="h3 text-white mb-0">Sales value</h5>
+                <h5 class="h3 text-white mb-0">Total hotel price average change</h5>
               </b-col>
               <b-col>
                 <b-nav class="nav-pills justify-content-end">
@@ -63,11 +65,7 @@
                     <span class="d-none d-md-block">Month</span>
                     <span class="d-md-none">M</span>
                   </b-nav-item>
-                  <b-nav-item link-classes="py-2 px-3" :active="bigLineChart.activeIndex === 1"
-                    @click.prevent="initBigChart(1)">
-                    <span class="d-none d-md-block">Week</span>
-                    <span class="d-md-none">W</span>
-                  </b-nav-item>
+
                 </b-nav>
               </b-col>
             </b-row>
@@ -156,6 +154,7 @@ export default {
         // },
         // extraOptions: chartConfigs.blueChartOptions,
       },
+      priceDifference: null, // new property
       redBarChart: {
         chartData: {
           labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -197,32 +196,44 @@ export default {
   //     this.bigLineChart.chartData = chartData;
   //   },
   // },
-
-  methods: {
-  initBigChart() {
-    const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let chartData = {
-      datasets: [{
-        label: 'Performance',
-        data: labels.map(label => {
-          const item = this.bigLineChart.allData.find(data => data.month === label);
-          return item ? item.totalAmount : 0;
-        })
-      }],
-      labels: labels,
-    };
-    this.bigLineChart.chartData = chartData;
-  },
-},
+  // ------------------------------------------
 
   async created() {
+    // try {
+    //   const response = await axios.get('http://localhost:3001/api/services/month-sum-price');
+    //   this.bigLineChart.allData = response.data;
+    //   this.initBigChart();
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // };
     try {
-      const response = await axios.get('http://localhost:3001/api/services/month-sum-price');
-      this.bigLineChart.allData = response.data;
+      const response = await axios.get('http://localhost:3001/api/services/average-price-per-month');
+      const data = response.data;
+
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      this.bigLineChart.chartData = {
+        datasets: [
+          {
+            label: 'Average Price',
+            data: months.map(month => {
+              const item = data.find(item => item.month === month);
+              return item ? item.avgPrice : 0;
+            })
+          }
+        ],
+        labels: months
+      };
+      // jan vs feb
+      const janData = data.find(item => item.month === 'Jan');
+      const febData = data.find(item => item.month === 'Feb');
+      if (janData && febData) {
+        this.priceIncrease = ((febData.avgPrice - janData.avgPrice) / janData.avgPrice) * 100;
+        this.priceDifference = febData.avgPrice - janData.avgPrice;
+      }
       this.initBigChart();
     } catch (error) {
       console.error('Error fetching data:', error);
-    }
+    };
   },
   mounted() {
     if (!this.bigLineChart.allData.length) {

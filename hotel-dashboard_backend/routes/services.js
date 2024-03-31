@@ -73,6 +73,7 @@ router.get('/sum-price', async function (req, res) {
     }
 });
 
+// !!!!!!!!! test ~~~~~~~~~~~~~
 // Get hotel names by Hong Kong Island District
 router.get('/hotels/test', async (req, res) => {
     const district = 'Hong Kong Island';
@@ -104,9 +105,46 @@ router.get('/hotels/hongkongisland', async (req, res) => {
     }
 });
 
+// Get Hong Kong Island District and total price per month
+router.get('/hotels/hongkongisland/total-price-per-month', async (req, res) => {
+    const district = 'Hong Kong Island';
+    try {
+        const pipeline = [
+            {
+                $match: {
+                    district: district
+                }
+            },
+            {
+                $group: {
+                    _id: "$month",
+                    totalPrice: { $sum: "$price" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    month: "$_id",
+                    totalPrice: 1
+                }
+            },
+            {
+                $sort: {
+                    month: 1
+                }
+            }
+        ];
+        const result = await db.collection('booking_price').aggregate(pipeline).toArray();
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching total price per month:', error);
+        res.status(500).send('Error fetching total price per month');
+    }
+});
+
 // Get hotel names by Kowloon District and count numbers
 router.get('/hotels/kowloon', async (req, res) => {
-    const district = 'Kowloon';
+    const district = 'Kowloon City';
     try {
         const hotels = await db.collection('booking_price').find({ district }).toArray();
         const hotelCounts = hotels.reduce((acc, hotel) => {
@@ -120,6 +158,43 @@ router.get('/hotels/kowloon', async (req, res) => {
         res.status(500).send('Error fetching hotels');
     }
 });
+// Get Kowloon District and total price per month
+router.get('/hotels/kowloon/total-price-per-month', async (req, res) => {
+    const district = 'Kowloon City';
+    try {
+        const pipeline = [
+            {
+                $match: {
+                    district: district
+                }
+            },
+            {
+                $group: {
+                    _id: "$month",
+                    totalPrice: { $sum: "$price" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    month: "$_id",
+                    totalPrice: 1
+                }
+            },
+            {
+                $sort: {
+                    month: 1
+                }
+            }
+        ];
+        const result = await db.collection('booking_price').aggregate(pipeline).toArray();
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching total price per month:', error);
+        res.status(500).send('Error fetching total price per month');
+    }
+});
+
 
 // Get hotel names by Tsim Sha Tsui District and count numbers
 router.get('/hotels/tsimshatsui', async (req, res) => {
@@ -138,6 +213,43 @@ router.get('/hotels/tsimshatsui', async (req, res) => {
     }
 });
 
+// Get Tsim Sha Tsui District and total price per month
+router.get('/hotels/tsimshatsui/total-price-per-month', async (req, res) => {
+    const district = 'Tsim Sha Tsui';
+    try {
+        const pipeline = [
+            {
+                $match: {
+                    district: district
+                }
+            },
+            {
+                $group: {
+                    _id: "$month",
+                    totalPrice: { $sum: "$price" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    month: "$_id",
+                    totalPrice: 1
+                }
+            },
+            {
+                $sort: {
+                    month: 1
+                }
+            }
+        ];
+        const result = await db.collection('booking_price').aggregate(pipeline).toArray();
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching total price per month:', error);
+        res.status(500).send('Error fetching total price per month');
+    }
+});
+
 // Get hotel names by Tsim Sha Tsui District and count numbers
 router.get('/hotels/yautsimmong', async (req, res) => {
     const district = 'Yau Tsim Mong';
@@ -152,6 +264,72 @@ router.get('/hotels/yautsimmong', async (req, res) => {
     } catch (error) {
         console.error('Error fetching hotels:', error);
         res.status(500).send('Error fetching hotels');
+    }
+});
+
+// Get Tsim Sha Tsui District and total price per month
+router.get('/hotels/yautsimmong/total-price-per-month', async (req, res) => {
+    const district = 'Yau Tsim Mong';
+    try {
+        const pipeline = [
+            {
+                $match: {
+                    district: district
+                }
+            },
+            {
+                $group: {
+                    _id: "$month",
+                    totalPrice: { $sum: "$price" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    month: "$_id",
+                    totalPrice: 1
+                }
+            },
+            {
+                $sort: {
+                    month: 1
+                }
+            }
+        ];
+        const result = await db.collection('booking_price').aggregate(pipeline).toArray();
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching total price per month:', error);
+        res.status(500).send('Error fetching total price per month');
+    }
+});
+
+// Get average-hotel-price
+router.get('/average-price-per-month', async (req, res) => {
+    try {
+        const collection = client.db('hotels').collection('booking_price');
+        const prices = await collection.aggregate([
+            {
+                $group: {
+                    _id: "$month",
+                    avgPrice: { $avg: "$price" }
+                }
+            },
+            {
+                $sort: { "_id": 1 }
+            }
+        ]).toArray();
+
+        // Convert _id to month and round avgPrice to 2 decimal places
+        const result = prices.map(({ _id, avgPrice }) => ({
+            month: _id,
+            avgPrice: Math.round(avgPrice * 100) / 100
+        }));
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching average price:', error);
+        res.status(500).send('Error fetching average price');
     }
 });
 

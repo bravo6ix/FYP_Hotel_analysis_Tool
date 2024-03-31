@@ -1,0 +1,177 @@
+[
+    {
+        "hotel_name": "The Royal Garden",
+        "district": "Yau Tsim Mong District",
+        "price": 2253,
+        "rating": 7.9,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Ramada Hong Kong Harbour View",
+        "district": "Hong Kong Island",
+        "price": 1165,
+        "rating": 5.2,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Hyatt Centric Victoria Harbour",
+        "district": "Hong Kong Island",
+        "price": 3120,
+        "rating": 8.1,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Harbour Grand Hong Kong",
+        "district": "Hong Kong Island",
+        "price": 2820,
+        "rating": 8.2,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "The Kowloon Hotel",
+        "district": "Yau Tsim Mong District",
+        "price": 2325,
+        "rating": 7.4,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "BEST WESTERN PLUS Hotel Hong Kong",
+        "district": "Hong Kong Island",
+        "price": 1438,
+        "rating": 7.1,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Ibis Hong Kong Central & Sheung Wan",
+        "district": "Hong Kong Island",
+        "price": 1862,
+        "rating": 7.8,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Cordis, Hong Kong",
+        "district": "Yau Tsim Mong District",
+        "price": 3050,
+        "rating": 8.5,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Ramada Hong Kong Grand",
+        "district": "Yau Tsim Mong District",
+        "price": 1127,
+        "rating": 5.8,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Harbour Plaza 8 Degrees",
+        "district": "Kowloon City District",
+        "price": 1104,
+        "rating": 7.2,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Hotel ICON",
+        "district": "Yau Tsim Mong District",
+        "price": 3455,
+        "rating": 8.8,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Hyatt Regency Hong Kong, Sha Tin",
+        "district": "Sha Tin District",
+        "price": 1836,
+        "rating": 8.2,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "The Stellar",
+        "district": "Hong Kong Island",
+        "price": 2546,
+        "rating": 8.9,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Grand Bay View Hotel",
+        "district": "Tsuen Wan District",
+        "price": 1054,
+        "rating": 7.9,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Y Hotel Hong Kong",
+        "district": "Hong Kong Island",
+        "price": 2300,
+        "rating": 8.4,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Dorsett Mongkok, Hong Kong",
+        "district": "Yau Tsim Mong District",
+        "price": 1520,
+        "rating": 7.9,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Dorsett Tsuen Wan, Hong Kong",
+        "district": "Kwai Chung",
+        "price": 923,
+        "rating": 7.6,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Four Points by Sheraton Hong Kong, Tung Chung",
+        "district": "Lantau",
+        "price": 1850,
+        "rating": 8.6,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Asia inn (Block B)",
+        "district": "Yau Tsim Mong District",
+        "price": 684,
+        "rating": 0.0,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Eaton HK",
+        "district": "Yau Tsim Mong District",
+        "price": 2330,
+        "rating": 8.2,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Nina Hotel Tsuen Wan West",
+        "district": "Tsuen Wan District",
+        "price": 1530,
+        "rating": 7.6,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Kowloon Shangri-La, Hong Kong",
+        "district": "Yau Tsim Mong District",
+        "price": 3850,
+        "rating": 8.6,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Good Fortune Inn",
+        "district": "Yau Tsim Mong District",
+        "price": 1110,
+        "rating": 9.0,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "InterContinental Grand Stanford Hong Kong, an IHG Hotel",
+        "district": "Yau Tsim Mong District",
+        "price": 3096,
+        "rating": 8.1,
+        "month": "Apr"
+    },
+    {
+        "hotel_name": "Kerry Hotel, Hong Kong",
+        "district": "Kowloon City District",
+        "price": 4800,
+        "rating": 8.8,
+        "month": "Apr"
+    }
+]

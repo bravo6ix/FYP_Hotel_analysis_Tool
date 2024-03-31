@@ -1,0 +1,177 @@
+[
+    {
+        "name": "The Royal Garden",
+        "district": "Yau Tsim Mong District",
+        "price": 2164,
+        "rating": "7.9",
+        "month": "Apr"
+    },
+    {
+        "name": "Hyatt Centric Victoria Harbour",
+        "district": "Hong Kong Island",
+        "price": 3120,
+        "rating": "8.1",
+        "month": "Apr"
+    },
+    {
+        "name": "Harbour Grand Hong Kong",
+        "district": "Hong Kong Island",
+        "price": 2820,
+        "rating": "8.2",
+        "month": "Apr"
+    },
+    {
+        "name": "The Kowloon Hotel",
+        "district": "Yau Tsim Mong District",
+        "price": 2123,
+        "rating": "7.4",
+        "month": "Apr"
+    },
+    {
+        "name": "Ibis Hong Kong Central & Sheung Wan",
+        "district": "Hong Kong Island",
+        "price": 1862,
+        "rating": "7.8",
+        "month": "Apr"
+    },
+    {
+        "name": "Cordis, Hong Kong",
+        "district": "Yau Tsim Mong District",
+        "price": 3050,
+        "rating": "8.5",
+        "month": "Apr"
+    },
+    {
+        "name": "Harbour Plaza 8 Degrees",
+        "district": "Kowloon City District",
+        "price": 938,
+        "rating": "7.2",
+        "month": "Apr"
+    },
+    {
+        "name": "Hotel ICON",
+        "district": "Yau Tsim Mong District",
+        "price": 3315,
+        "rating": "8.8",
+        "month": "Apr"
+    },
+    {
+        "name": "Dorsett Mongkok, Hong Kong",
+        "district": "Yau Tsim Mong District",
+        "price": 1377,
+        "rating": "7.9",
+        "month": "Apr"
+    },
+    {
+        "name": "Dorsett Tsuen Wan, Hong Kong",
+        "district": "Kwai Chung",
+        "price": 923,
+        "rating": "7.6",
+        "month": "Apr"
+    },
+    {
+        "name": "Four Points by Sheraton Hong Kong, Tung Chung",
+        "district": "Lantau",
+        "price": 1850,
+        "rating": "8.6",
+        "month": "Apr"
+    },
+    {
+        "name": "Eaton HK",
+        "district": "Yau Tsim Mong District",
+        "price": 2330,
+        "rating": "8.2",
+        "month": "Apr"
+    },
+    {
+        "name": "InterContinental Grand Stanford Hong Kong, an IHG Hotel",
+        "district": "Yau Tsim Mong District",
+        "price": 3096,
+        "rating": "8.1",
+        "month": "Apr"
+    },
+    {
+        "name": "Gateway Hotel, Marco Polo",
+        "district": "Yau Tsim Mong District",
+        "price": 2854,
+        "rating": "8.1",
+        "month": "Apr"
+    },
+    {
+        "name": "Prudential Hotel",
+        "district": "Yau Tsim Mong District",
+        "price": 1900,
+        "rating": "7.4",
+        "month": "Apr"
+    },
+    {
+        "name": "Courtyard by Marriott Hong Kong Sha Tin",
+        "district": "Sha Tin District",
+        "price": 1750,
+        "rating": "8.2",
+        "month": "Apr"
+    },
+    {
+        "name": "B P International",
+        "district": "Yau Tsim Mong District",
+        "price": 1864,
+        "rating": "7.6",
+        "month": "Apr"
+    },
+    {
+        "name": "Harbour Grand Kowloon",
+        "district": "Kowloon City District",
+        "price": 2288,
+        "rating": "8.0",
+        "month": "Apr"
+    },
+    {
+        "name": "W Hong Kong",
+        "district": "Yau Tsim Mong District",
+        "price": 5300,
+        "rating": "8.6",
+        "month": "Apr"
+    },
+    {
+        "name": "Courtyard by Marriott Hong Kong",
+        "district": "Hong Kong Island",
+        "price": 3000,
+        "rating": "8.4",
+        "month": "Apr"
+    },
+    {
+        "name": "Prince Hotel, Marco Polo",
+        "district": "Yau Tsim Mong District",
+        "price": 2850,
+        "rating": "8.7",
+        "month": "Apr"
+    },
+    {
+        "name": "New World Millennium Hong Kong Hotel",
+        "district": "Yau Tsim Mong District",
+        "price": 2963,
+        "rating": "8.2",
+        "month": "Apr"
+    },
+    {
+        "name": "Four Seasons Hotel Hong Kong",
+        "district": "Hong Kong Island",
+        "price": 10384,
+        "rating": "9.4",
+        "month": "Apr"
+    },
+    {
+        "name": "Royal Park Hotel",
+        "district": "Sha Tin District",
+        "price": 1837,
+        "rating": "8.0",
+        "month": "Apr"
+    },
+    {
+        "name": "The Luxe Manor",
+        "district": "Yau Tsim Mong District",
+        "price": 1955,
+        "rating": "8.1",
+        "month": "Apr"
+    }
+]

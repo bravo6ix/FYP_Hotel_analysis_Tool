@@ -73,11 +73,6 @@
                     <span class="d-none d-md-block">Month</span>
                     <span class="d-md-none">M</span>
                   </b-nav-item>
-                  <b-nav-item link-classes="py-2 px-3" :active="bigLineChart.activeIndex === 1"
-                    @click.prevent="initBigChart(1)">
-                    <span class="d-none d-md-block">Week</span>
-                    <span class="d-md-none">W</span>
-                  </b-nav-item>
                 </b-nav>
               </b-col>
             </b-row>
@@ -168,32 +163,26 @@ export default {
     };
   },
 
-  methods: {
-    initBigChart() {
-      const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-      let chartData = {
-        datasets: [{
-          label: 'Performance',
-          data: labels.map(label => {
-            const item = this.bigLineChart.allData.find(data => data.month === label);
-            return item ? item.totalAmount : 0;
-          })
-        }],
-        labels: labels,
-      };
-      this.bigLineChart.chartData = chartData;
-    },
-
-  },
-
   async created() {
     try {
-      const response = await axios.get('http://localhost:3001/api/services/month-sum-price');
+      const response = await axios.get('http://localhost:3001/api/services/hotels/hongkongisland/total-price-per-month');
       const response2 = await axios.get('http://localhost:3001/api/services/hotels/hongkongisland');
 
       // response 1
-      this.bigLineChart.allData = response.data;
-      this.initBigChart();
+      const data = response.data;
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      this.bigLineChart.chartData = {
+        datasets: [
+          {
+            label: 'Total Price',
+            data: months.map(month => {
+              const item = data.find(item => item.month === month);
+              return item ? item.totalPrice : 0;
+            })
+          }
+        ],
+        labels: months
+      };
 
       // response 2
       this.wordCloudData = response2.data;
@@ -213,17 +202,12 @@ export default {
           rotationRange: [0,0],
         }]
       });
-
     } catch (error) {
       console.error('Error fetching data:', error);
     };
   },
 
   mounted() {
-    if (!this.bigLineChart.allData.length) {
-      this.initBigChart();
-    };
-
     // Resize the wordcloud chart
     this.wordCloudChart.resize();
   },
