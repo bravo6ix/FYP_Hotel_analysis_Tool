@@ -1,26 +1,44 @@
-name,location,price,rating
-The Langham Hong Kong,"Yau Tsim Mong District, Hong Kong","HK$ 9,900",8.4
-Lan Kwai Fong Hotel - Kau U Fong,"Hong Kong Island, Hong Kong","HK$ 3,815",7.7
-Hygge House,"Yau Tsim Mong District, Hong Kong","HK$ 3,029",8.4
-Holiday Guest House,"Yau Tsim Mong District, Hong Kong","HK$ 2,336",7.9
-Wharney Hotel,"Hong Kong Island, Hong Kong","HK$ 3,209",8.0
-"Dorsett Mongkok, Hong Kong","Yau Tsim Mong District, Hong Kong","HK$ 4,209",7.8
-Bishop Lei International House,"Hong Kong Island, Hong Kong","HK$ 2,910",7.9
-"Dorsett Tsuen Wan, Hong Kong","Kwai Chung, Hong Kong","HK$ 2,421",7.3
-Grand Hyatt Hong Kong,"Hong Kong Island, Hong Kong","HK$ 9,990",8.8
-"Dorsett Wanchai, Hong Kong","Hong Kong Island, Hong Kong","HK$ 4,576",7.3
-The Harbourview,"Hong Kong Island, Hong Kong","HK$ 3,519",7.6
-"Cordis, Hong Kong","Yau Tsim Mong District, Hong Kong","HK$ 5,900",8.4
-Courtyard by Marriott Hong Kong Sha Tin,"Sha Tin District, Hong Kong","HK$ 5,050",8.1
-Novotel Century Hong Kong,"Hong Kong Island, Hong Kong","HK$ 5,353",7.9
-Royal Park Hotel,"Sha Tin District, Hong Kong","HK$ 4,678",7.8
-B P International,"Yau Tsim Mong District, Hong Kong","HK$ 4,647",7.5
-Eaton HK,"Yau Tsim Mong District, Hong Kong","HK$ 3,936",8.2
-Cosmo Hotel Hong Kong,"Hong Kong Island, Hong Kong","HK$ 2,967",7.1
-Ramada Hong Kong Harbour View,"Hong Kong Island, Hong Kong","HK$ 2,872",5.0
-"Four Points by Sheraton Hong Kong, Tung Chung","Lantau, Hong Kong","HK$ 4,200",8.5
-Renaissance Hong Kong Harbour View Hotel,"Hong Kong Island, Hong Kong","HK$ 8,100",7.9
-The Cityview,"Yau Tsim Mong District, Hong Kong","HK$ 3,832",7.4
-Stanford Hillview Hotel Hong Kong,"Yau Tsim Mong District, Hong Kong","HK$ 3,916",7.7
-"Prince Hotel, Marco Polo","Yau Tsim Mong District, Hong Kong","HK$ 7,140",8.1
-Metropark Hotel Mongkok,"Yau Tsim Mong District, Hong Kong","HK$ 3,840",7.8
+hotel_name,district,price,rating,month
+The Royal Garden,Yau Tsim Mong,2164,7.9,Apr
+Ramada Hong Kong Harbour View,Hong Kong Island,1165,5.2,Apr
+Hyatt Centric Victoria Harbour,Hong Kong Island,3120,8.1,Apr
+Harbour Grand Hong Kong,Hong Kong Island,2820,8.2,Apr
+The Kowloon Hotel,Yau Tsim Mong,2026,7.4,Apr
+BEST WESTERN PLUS Hotel Hong Kong,Hong Kong Island,1438,7.1,Apr
+Ibis Hong Kong Central & Sheung Wan,Hong Kong Island,1862,7.8,Apr
+"Cordis, Hong Kong",Yau Tsim Mong,3050,8.5,Apr
+Ramada Hong Kong Grand,Yau Tsim Mong,1127,5.8,Apr
+Harbour Plaza 8 Degrees,Kowloon City,938,7.2,Apr
+Hotel ICON,Yau Tsim Mong,3243,8.8,Apr
+"Hyatt Regency Hong Kong, Sha Tin",Sha Tin,1836,8.2,Apr
+The Stellar,Hong Kong Island,2546,8.9,Apr
+Grand Bay View Hotel,Tsuen Wan,972,7.9,Apr
+"Dorsett Mongkok, Hong Kong",Yau Tsim Mong,1358,7.9,Apr
+"Dorsett Tsuen Wan, Hong Kong",Kwai Chung,923,7.6,Apr
+"Four Points by Sheraton Hong Kong, Tung Chung",Lantau,1850,8.6,Apr
+Eaton HK,Yau Tsim Mong,2330,8.2,Apr
+Nina Hotel Tsuen Wan West,Tsuen Wan,1479,7.6,Apr
+"Kowloon Shangri-La, Hong Kong",Yau Tsim Mong,3850,8.6,Apr
+Asia inn (Block B),Yau Tsim Mong,684,0.0,Apr
+"InterContinental Grand Stanford Hong Kong, an IHG Hotel",Yau Tsim Mong,3096,8.1,Apr
+"Gateway Hotel, Marco Polo",Yau Tsim Mong,2854,8.1,Apr
+"Kerry Hotel, Hong Kong",Kowloon City,4800,8.8,Apr
+Best Western Plus Hotel Kowloon,Yau Tsim Mong,1200,5.5,Apr
+Prudential Hotel,Yau Tsim Mong,1900,7.4,Apr
+Harbour Grand Kowloon,Kowloon City,2280,8.0,Apr
+B P International,Yau Tsim Mong,1864,7.6,Apr
+Courtyard by Marriott Hong Kong Sha Tin,Sha Tin,1750,8.2,Apr
+W Hong Kong,Yau Tsim Mong,5300,8.6,Apr
+Courtyard by Marriott Hong Kong,Hong Kong Island,3000,8.4,Apr
+"Prince Hotel, Marco Polo",Yau Tsim Mong,2850,8.7,Apr
+New World Millennium Hong Kong Hotel,Yau Tsim Mong,2963,8.2,Apr
+Four Seasons Hotel Hong Kong,Hong Kong Island,10384,9.4,Apr
+Shama Hub Metro South Hong Kong,Southern,1313,0.0,Apr
+Royal Plaza Hotel,Yau Tsim Mong,2800,8.3,Apr
+Rambler Oasis Hotel,Tsing Yi,676,5.9,Apr
+Ramada Hong Kong Grand View,Hong Kong Island,1191,5.8,Apr
+Panda Hotel,Tsuen Wan,1005,7.2,Apr
+Royal Park Hotel,Sha Tin,1937,8.0,Apr
+The Luxe Manor,Yau Tsim Mong,1955,8.1,Apr
+Royal Park Hotel,Sha Tin,1837,8.0,Apr
+Royal View Hotel,Tsuen Wan,1089,7.6,Apr
