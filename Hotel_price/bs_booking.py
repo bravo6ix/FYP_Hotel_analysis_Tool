@@ -66,8 +66,8 @@ for hotel in hotels:
         'month': month2,
     })
 
-hotels = pd.DataFrame(hotels_data)
-hotels.head()
+    hotels = pd.DataFrame(hotels_data)
+    hotels.head()
 
 # hotels.to_csv('bs_hotels.csv', header=True, index=False)
 hotels.to_json('Hotel_price/bs_hotels.json', orient='records')
