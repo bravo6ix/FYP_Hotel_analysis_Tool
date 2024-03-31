@@ -18,6 +18,26 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Dashboard.vue')
       },
       {
+        path: '/hongkongisland',
+        name: 'hongkongisland',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/HongKongIsland.vue')
+      },
+      {
+        path: '/kowloon',
+        name: 'kowloon',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Kowloon.vue')
+      },
+      {
+        path: '/tsimshatsui',
+        name: 'tsimshatsui',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/TsimShaTsui.vue')
+      },
+      {
+        path: '/yautsimmong',
+        name: 'yautsimmong',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/YauTsimMong.vue')
+      },
+      {
         path: '/icons',
         name: 'icons',
         component: () => import(/* webpackChunkName: "demo" */ '../views/Icons.vue')

@@ -5,7 +5,7 @@
       <template slot="links">
         <sidebar-item
           :link="{
-            name: 'Dashboard',
+            name: 'Overall information',
             path: '/dashboard',
             icon: 'ni ni-tv-2 text-primary',
           }"
@@ -14,28 +14,64 @@
 
         <sidebar-item
             :link="{
-              name: 'Icons',
-              path: '/icons',
-              icon: 'ni ni-planet text-blue'
+              name: 'Hong Kong Island',
+              path: '/hongkongisland',
+              icon: 'ni ni-collection text-green'
               }"
             >
         </sidebar-item>
 
         <sidebar-item
+            :link="{
+              name: 'Kowloon',
+              path: '/kowloon',
+              icon: 'ni ni-collection text-orange'
+              }"
+            >
+        </sidebar-item>
+
+        <sidebar-item
+            :link="{
+              name: 'Tsim Sha Tsui',
+              path: '/tsimshatsui',
+              icon: 'ni ni-collection  text-yellow'
+              }"
+            >
+        </sidebar-item>
+
+        <sidebar-item
+            :link="{
+              name: 'Yau Tsim Mong',
+              path: '/yautsimmong',
+              icon: 'ni ni-collection  text-pink'
+              }"
+            >
+        </sidebar-item>
+
+        <!-- <sidebar-item
+            :link="{
+              name: 'Icons',
+              path: '/icons',
+              icon: 'ni ni-planet text-blue'
+              }"
+            >
+        </sidebar-item> -->
+
+        <!-- <sidebar-item
               :link="{
                 name: 'Maps',
                 path: '/maps',
                 icon: 'ni ni-pin-3 text-orange'
               }">
-        </sidebar-item>
+        </sidebar-item> -->
 
-        <sidebar-item
+        <!-- <sidebar-item
               :link="{
                 name: 'User Profile',
                 path: '/profile',
                 icon: 'ni ni-single-02 text-yellow'
                 }">
-        </sidebar-item>
+        </sidebar-item> -->
 
         <sidebar-item
                 :link="{
@@ -45,7 +81,7 @@
                 }">
         </sidebar-item>
 
-        <sidebar-item
+        <!-- <sidebar-item
                   :link="{
                     name: 'Login',
                     path: '/login',
@@ -58,10 +94,10 @@
                     path: '/register',
                     icon: 'ni ni-circle-08 text-pink'
                   }">
-        </sidebar-item>
+        </sidebar-item> -->
       </template>
 
-      <template slot="links-after">
+      <!-- <template slot="links-after">
         <hr class="my-3">
         <h6 class="navbar-heading p-0 text-muted">Documentation</h6>
 
@@ -81,7 +117,7 @@
               <b-nav-text class="p-0">Components</b-nav-text>
           </b-nav-item>
         </b-nav>
-      </template>
+      </template> -->
     </side-bar>
     <div class="main-content">
       <dashboard-navbar :type="$route.meta.navbarType"></dashboard-navbar>

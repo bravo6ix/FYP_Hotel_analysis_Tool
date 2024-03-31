@@ -73,4 +73,86 @@ router.get('/sum-price', async function (req, res) {
     }
 });
 
+// Get hotel names by Hong Kong Island District
+router.get('/hotels/test', async (req, res) => {
+    const district = 'Hong Kong Island';
+
+    try {
+        const hotels = await db.collection('booking_price').find({ district }).toArray();
+        const hotelNames = hotels.map(hotel => hotel.hotel_name);
+        res.json(hotelNames);
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+        res.status(500).send('Error fetching hotels');
+    }
+});
+
+// Get hotel names by Hong Kong Island District and count numbers
+router.get('/hotels/hongkongisland', async (req, res) => {
+    const district = 'Hong Kong Island';
+    try {
+        const hotels = await db.collection('booking_price').find({ district }).toArray();
+        const hotelCounts = hotels.reduce((acc, hotel) => {
+            acc[hotel.hotel_name] = (acc[hotel.hotel_name] || 0) + 1;
+            return acc;
+        }, {});
+        const wordCloudData = Object.entries(hotelCounts).map(([name, value]) => ({ name, value }));
+        res.json(wordCloudData);
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+        res.status(500).send('Error fetching hotels');
+    }
+});
+
+// Get hotel names by Kowloon District and count numbers
+router.get('/hotels/kowloon', async (req, res) => {
+    const district = 'Kowloon';
+    try {
+        const hotels = await db.collection('booking_price').find({ district }).toArray();
+        const hotelCounts = hotels.reduce((acc, hotel) => {
+            acc[hotel.hotel_name] = (acc[hotel.hotel_name] || 0) + 1;
+            return acc;
+        }, {});
+        const wordCloudData = Object.entries(hotelCounts).map(([name, value]) => ({ name, value }));
+        res.json(wordCloudData);
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+        res.status(500).send('Error fetching hotels');
+    }
+});
+
+// Get hotel names by Tsim Sha Tsui District and count numbers
+router.get('/hotels/tsimshatsui', async (req, res) => {
+    const district = 'Tsim Sha Tsui';
+    try {
+        const hotels = await db.collection('booking_price').find({ district }).toArray();
+        const hotelCounts = hotels.reduce((acc, hotel) => {
+            acc[hotel.hotel_name] = (acc[hotel.hotel_name] || 0) + 1;
+            return acc;
+        }, {});
+        const wordCloudData = Object.entries(hotelCounts).map(([name, value]) => ({ name, value }));
+        res.json(wordCloudData);
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+        res.status(500).send('Error fetching hotels');
+    }
+});
+
+// Get hotel names by Tsim Sha Tsui District and count numbers
+router.get('/hotels/yautsimmong', async (req, res) => {
+    const district = 'Yau Tsim Mong';
+    try {
+        const hotels = await db.collection('booking_price').find({ district }).toArray();
+        const hotelCounts = hotels.reduce((acc, hotel) => {
+            acc[hotel.hotel_name] = (acc[hotel.hotel_name] || 0) + 1;
+            return acc;
+        }, {});
+        const wordCloudData = Object.entries(hotelCounts).map(([name, value]) => ({ name, value }));
+        res.json(wordCloudData);
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+        res.status(500).send('Error fetching hotels');
+    }
+});
+
 module.exports = router;
