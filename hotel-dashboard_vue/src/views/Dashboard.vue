@@ -23,7 +23,7 @@
             </template>
           </stats-card>
         </b-col>
-        
+
         <!-- new alter for avg price change -->
         <b-col xl="3" md="6">
           <stats-card title="Price increase from January to February" type="gradient-green" :sub-title="priceDifference"
@@ -96,9 +96,9 @@
         <b-col xl="8" class="mb-5 mb-xl-0">
           <page-visits-table></page-visits-table>
         </b-col>
-        <b-col xl="4" class="mb-5 mb-xl-0">
+        <!-- <b-col xl="4" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
-        </b-col>
+        </b-col> -->
       </b-row>
       <!--End tables-->
     </b-container>

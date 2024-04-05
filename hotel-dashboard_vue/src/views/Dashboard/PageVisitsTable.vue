@@ -4,38 +4,38 @@
     <template v-slot:header>
       <b-row align-v="center">
         <b-col>
-          <h3 class="mb-0">Page visits</h3>
+          <h3 class="mb-0">Hotel List</h3>
         </b-col>
-        <b-col class="text-right">
+        <!-- <b-col class="text-right">
           <a href="#!" class="btn btn-sm btn-primary">See all</a>
-        </b-col>
+        </b-col> -->
       </b-row>
     </template>
 
     <el-table class="table-responsive table"
               :data="tableData"
               header-row-class-name="thead-light">
-      <el-table-column label="Page name"
+      <el-table-column label="Hotel Name"
                        min-width="130px"
-                       prop="page">
+                       prop="hotel">
         <template v-slot="{row}">
-          <div class="font-weight-600">{{row.page}}</div>
+          <div class="font-weight-600">{{row.hotel}}</div>
         </template>
       </el-table-column>
-      <el-table-column label="Visitors"
+      <el-table-column label="Count"
                        min-width="70px"
-                       prop="visitors">
+                       prop="count">
       </el-table-column>
-      <el-table-column label="Unique users"
-                       min-width="90px"
-                       prop="unique">
+      <el-table-column label="District"
+                       min-width="120px"
+                       prop="district">
       </el-table-column>
 
-      <el-table-column label="Bounce rate"
+      <el-table-column label="Rating"
                        min-width="90px"
-                       prop="bounceRate">
+                       prop="rating">
         <template v-slot="{row}">
-          {{row.bounceRate}}
+          {{row.rating}}
         </template>
       </el-table-column>
     </el-table>
@@ -45,7 +45,7 @@
   import { Table, TableColumn, DropdownMenu, DropdownItem, Dropdown} from 'element-ui'
   import axios from 'axios';
   export default {
-    name: 'page-visits-table',
+    name: 'hotel-visits-table',
     components: {
       [Table.name]: Table,
       [TableColumn.name]: TableColumn,
@@ -57,38 +57,38 @@
       return {
         tableData: [
           {
-            page: '/argon/',
-            visitors: '4,569',
-            unique: '340',
-            bounceRate: '46,53%'
+            hotel: 'Ibis Hong Kong Central & Sheung Wan',
+            count: '4',
+            district: 'Hong Kong Island',
+            rating: '8.2'
           },
           {
-            page: '/argon/index.html',
-            visitors: '3,985',
-            unique: '319',
-            bounceRate: '46,53%'
+            hotel: 'BEST WESTERN PLUS Hotel Hong Kong',
+            count: '3',
+            district: 'Hong Kong Island',
+            rating: '6.8'
           },
           {
-            page: '/argon/charts.html',
-            visitors: '3,513',
-            unique: '294',
-            bounceRate: '36,49%'
+            hotel: 'Ramada Hong Kong Harbour View',
+            count: '3',
+            district: '294',
+            rating: '6.3'
           },
           {
-            page: '/argon/tables.html',
-            visitors: '2,050',
-            unique: '147',
-            bounceRate: '50,87%'
+            hotel: 'Hyatt Centric Victoria Harbour',
+            count: '2',
+            district: 'Hong Kong Island',
+            rating: '7.9'
           },
           {
-            page: '/argon/profile.html',
-            visitors: '1,795',
-            unique: '190',
-            bounceRate: '46,53%'
+            hotel: 'The Royal Garden',
+            count: '4',
+            district: 'Yau Tsim Mong',
+            rating: '7.8'
           }
         ]
       }
-      
+
 
     }
 
