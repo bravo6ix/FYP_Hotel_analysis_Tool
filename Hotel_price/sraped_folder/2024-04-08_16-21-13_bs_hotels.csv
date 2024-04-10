@@ -1,0 +1,62 @@
+hotel_name,district,price,rating,scraped_month,views,target_start_week,target_start_month,target_start_month_day,target_end_week,target_end_month,target_end_month_day
+Summit View Kowloon,Kowloon City,3480,7.8,Apr,370,N/A,N/A,N/A,N/A,N/A,N/A
+Grand Hyatt Hong Kong,Hong Kong Island,8327,8.9,Apr,1084,N/A,N/A,N/A,N/A,N/A,N/A
+"Page148, Page Hotels",Yau Tsim Mong,4860,8.6,Apr,2855,N/A,N/A,N/A,N/A,N/A,N/A
+Hotel ICON,Yau Tsim Mong,6789,8.8,Apr,1734,N/A,N/A,N/A,N/A,N/A,N/A
+Four Seasons Hotel Hong Kong,Hong Kong Island,15222,9.4,Apr,307,N/A,N/A,N/A,N/A,N/A,N/A
+"Island Shangri-La, Hong Kong",Hong Kong Island,11700,8.8,Apr,400,N/A,N/A,N/A,N/A,N/A,N/A
+"Mandarin Oriental, Hong Kong",Hong Kong Island,15840,9.1,Apr,348,N/A,N/A,N/A,N/A,N/A,N/A
+"Kerry Hotel, Hong Kong",Kowloon City,8100,8.8,Apr,705,N/A,N/A,N/A,N/A,N/A,N/A
+BEST WESTERN PLUS Hotel Hong Kong,Hong Kong Island,3486,7.1,Apr,2145,N/A,N/A,N/A,N/A,N/A,N/A
+Hyatt Centric Victoria Harbour,Hong Kong Island,6450,8.1,Apr,1822,N/A,N/A,N/A,N/A,N/A,N/A
+"The Murray, Hong Kong, a Niccolo Hotel",Hong Kong Island,9040,8.9,Apr,304,N/A,N/A,N/A,N/A,N/A,N/A
+"The Landmark Mandarin Oriental, Hong Kong",Hong Kong Island,12005,8.9,Apr,69,N/A,N/A,N/A,N/A,N/A,N/A
+"Kowloon Shangri-La, Hong Kong",Yau Tsim Mong,9470,8.6,Apr,1057,N/A,N/A,N/A,N/A,N/A,N/A
+The Langham Hong Kong,Yau Tsim Mong,7520,8.4,Apr,903,N/A,N/A,N/A,N/A,N/A,N/A
+Ramada Hong Kong Harbour View,Hong Kong Island,3258,5.3,Apr,1630,N/A,N/A,N/A,N/A,N/A,N/A
+"Dorsett Wanchai, Hong Kong",Hong Kong Island,4477,7.5,Apr,1224,N/A,N/A,N/A,N/A,N/A,N/A
+Lan Kwai Fong Hotel - Kau U Fong,Hong Kong Island,4862,7.8,Apr,742,N/A,N/A,N/A,N/A,N/A,N/A
+Best Western Hotel Causeway Bay,Hong Kong Island,2830,6.3,Apr,1290,N/A,N/A,N/A,N/A,N/A,N/A
+Ibis Hong Kong Central & Sheung Wan,Hong Kong Island,3287,7.8,Apr,2779,N/A,N/A,N/A,N/A,N/A,N/A
+EAST Residences,Hong Kong Island,5760,8.8,Apr,358,N/A,N/A,N/A,N/A,N/A,N/A
+"Dorsett Mongkok, Hong Kong",Yau Tsim Mong,4163,7.9,Apr,1426,N/A,N/A,N/A,N/A,N/A,N/A
+Rosewood Hong Kong,Yau Tsim Mong,18000,8.8,Apr,196,N/A,N/A,N/A,N/A,N/A,N/A
+Nina Hotel Causeway Bay,Hong Kong Island,4080,8.1,Apr,1174,N/A,N/A,N/A,N/A,N/A,N/A
+Jen Hong Kong by Shangri-La,Hong Kong Island,4480,8.4,Apr,702,N/A,N/A,N/A,N/A,N/A,N/A
+"Cordis, Hong Kong",Yau Tsim Mong,5580,8.5,Apr,2611,N/A,N/A,N/A,N/A,N/A,N/A
+Novotel Century Hong Kong,Hong Kong Island,4130,8.0,Apr,1212,N/A,N/A,N/A,N/A,N/A,N/A
+Renaissance Hong Kong Harbour View Hotel,Hong Kong Island,6480,8.0,Apr,723,N/A,N/A,N/A,N/A,N/A,N/A
+B P International,Yau Tsim Mong,4507,7.6,Apr,1965,N/A,N/A,N/A,N/A,N/A,N/A
+One-Eight-One Hotel & Serviced Residences,Hong Kong Island,6542,9.0,Apr,480,N/A,N/A,N/A,N/A,N/A,N/A
+Prudential Hotel,Yau Tsim Mong,4073,7.4,Apr,1240,N/A,N/A,N/A,N/A,N/A,N/A
+Conrad Hong Kong,Hong Kong Island,7680,8.2,Apr,449,N/A,N/A,N/A,N/A,N/A,N/A
+The Kowloon Hotel,Yau Tsim Mong,5025,7.4,Apr,3406,N/A,N/A,N/A,N/A,N/A,N/A
+W Hong Kong,Yau Tsim Mong,8910,8.6,Apr,368,N/A,N/A,N/A,N/A,N/A,N/A
+"Holiday Inn Golden Mile, an IHG Hotel",Yau Tsim Mong,5820,8.2,Apr,2246,N/A,N/A,N/A,N/A,N/A,N/A
+The Hari Hong Kong,Hong Kong Island,5590,8.7,Apr,1037,N/A,N/A,N/A,N/A,N/A,N/A
+JW Marriott Hotel Hong Kong,Hong Kong Island,8586,8.3,Apr,423,N/A,N/A,N/A,N/A,N/A,N/A
+Nathan Hotel,Yau Tsim Mong,5144,8.0,Apr,1334,N/A,N/A,N/A,N/A,N/A,N/A
+"The Park Lane Hong Kong, a Pullman Hotel",Hong Kong Island,6756,8.0,Apr,1277,N/A,N/A,N/A,N/A,N/A,N/A
+Harbour Grand Hong Kong,Hong Kong Island,5065,8.2,Apr,3775,N/A,N/A,N/A,N/A,N/A,N/A
+Eaton HK,Yau Tsim Mong,4644,8.2,Apr,2758,N/A,N/A,N/A,N/A,N/A,N/A
+Summit View Kowloon,Kowloon City,3306,7.8,Apr,370,N/A,N/A,N/A,N/A,N/A,N/A
+"Page148, Page Hotels",Yau Tsim Mong,4890,8.6,Apr,2855,N/A,N/A,N/A,N/A,N/A,N/A
+Hotel ICON,Yau Tsim Mong,6983,8.8,Apr,1734,N/A,N/A,N/A,N/A,N/A,N/A
+"Dorsett Wanchai, Hong Kong",Hong Kong Island,4408,7.5,Apr,1224,N/A,N/A,N/A,N/A,N/A,N/A
+Lan Kwai Fong Hotel - Kau U Fong,Hong Kong Island,4961,7.8,Apr,742,N/A,N/A,N/A,N/A,N/A,N/A
+"Dorsett Mongkok, Hong Kong",Yau Tsim Mong,4332,7.9,Apr,1426,N/A,N/A,N/A,N/A,N/A,N/A
+B P International,Yau Tsim Mong,4532,7.6,Apr,1965,N/A,N/A,N/A,N/A,N/A,N/A
+One-Eight-One Hotel & Serviced Residences,Hong Kong Island,6650,9.0,Apr,480,N/A,N/A,N/A,N/A,N/A,N/A
+Prudential Hotel,Yau Tsim Mong,4500,7.4,Apr,1240,N/A,N/A,N/A,N/A,N/A,N/A
+The Hari Hong Kong,Hong Kong Island,6480,8.7,Apr,1037,N/A,N/A,N/A,N/A,N/A,N/A
+Nathan Hotel,Yau Tsim Mong,5228,8.0,Apr,1334,N/A,N/A,N/A,N/A,N/A,N/A
+Harbour Grand Hong Kong,Hong Kong Island,5580,8.2,Apr,3775,N/A,N/A,N/A,N/A,N/A,N/A
+"Page148, Page Hotels",Yau Tsim Mong,5147,8.6,Apr,2855,N/A,N/A,N/A,N/A,N/A,N/A
+Hotel ICON,Yau Tsim Mong,7350,8.8,Apr,1734,N/A,N/A,N/A,N/A,N/A,N/A
+"Dorsett Wanchai, Hong Kong",Hong Kong Island,4640,7.5,Apr,1224,N/A,N/A,N/A,N/A,N/A,N/A
+Lan Kwai Fong Hotel - Kau U Fong,Hong Kong Island,5222,7.8,Apr,742,N/A,N/A,N/A,N/A,N/A,N/A
+"Dorsett Mongkok, Hong Kong",Yau Tsim Mong,4560,7.9,Apr,1426,N/A,N/A,N/A,N/A,N/A,N/A
+B P International,Yau Tsim Mong,4770,7.6,Apr,1965,N/A,N/A,N/A,N/A,N/A,N/A
+One-Eight-One Hotel & Serviced Residences,Hong Kong Island,7000,9.0,Apr,480,N/A,N/A,N/A,N/A,N/A,N/A
+The Kowloon Hotel,Yau Tsim Mong,5580,7.4,Apr,3406,N/A,N/A,N/A,N/A,N/A,N/A
+Nathan Hotel,Yau Tsim Mong,5503,8.0,Apr,1334,N/A,N/A,N/A,N/A,N/A,N/A
