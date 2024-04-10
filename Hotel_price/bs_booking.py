@@ -153,7 +153,7 @@ hotelss = hotels.drop_duplicates()
 # MongoDB connection
 client = MongoClient("mongodb+srv://qq1027784227:qq1027784227@hotel.0a4is7r.mongodb.net/")
 db = client['hotels']
-collection = db['test_ingestion']
+collection = db['booking_price']
 
 ## handle transform dataframe to dict
 data_dict = hotelss.to_dict("records")

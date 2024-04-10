@@ -21,25 +21,92 @@ router.get('/all-data', async function (req, res, next) {
     }
 });
 
+/* For table - get hotel name, count, district and rating */
+router.get('/hotels/table', async function (req, res) {
+    try {
+
+        const result = await db.collection("booking_price").aggregate([
+            {
+                $group: {
+                    _id: { hotel_name: "$hotel_name", district: "$district" },
+                    count: { $sum: 1 },
+                    rating: { $sum: "$rating" },
+                    views: { $sum: "$views" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    hotel_name: "$_id.hotel_name",
+                    district: "$_id.district",
+                    count: 1,
+                    rating: 1,
+                    views: 1,
+                }
+            }
+        ]).toArray();
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching hotel data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Hong Kong Island district table
+router.get('/hotels/district/HongKongIsland', async function (req, res) {
+    try {
+        const district = "Hong Kong Island";
+        const result = await db.collection("booking_price").aggregate([
+            {
+                $match: { district: district }
+            },
+            {
+                $group: {
+                    _id: { hotel_name: "$hotel_name", district: "$district" },
+                    count: { $sum: 1 },
+                    rating: { $avg: "$rating" },
+                    views: { $sum: "$views" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    hotel_name: "$_id.hotel_name",
+                    district: "$_id.district",
+                    count: 1,
+                    rating: 1,
+                    views: 1
+                }
+            }
+        ]).toArray();
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching hotel data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 /* GET booking per sum by month with price data */
 router.get('/month-sum-price', async function (req, res, next) {
     try {
         const result = await db.collection("booking_price").aggregate([
             {
                 $group: {
-                    _id: { month: "$month" },
+                    _id: { scraped_month: "$scraped_month" },
                     totalAmount: { $sum: '$price' }
                 }
             },
             {
                 $project: {
-                    month: '$_id.month',
+                    scraped_month: '$_id.scraped_month',
                     totalAmount: 1,
                     _id: 0
                 }
             },
             {
-                $sort: { month: 1 }
+                $sort: { scraped_month: 1 }
             }
         ]).toArray();
 
@@ -117,20 +184,20 @@ router.get('/hotels/hongkongisland/total-price-per-month', async (req, res) => {
             },
             {
                 $group: {
-                    _id: "$month",
+                    _id: "$scraped_month",
                     totalPrice: { $sum: "$price" }
                 }
             },
             {
                 $project: {
                     _id: 0,
-                    month: "$_id",
+                    scraped_month: "$_id",
                     totalPrice: 1
                 }
             },
             {
                 $sort: {
-                    month: 1
+                    scraped_month: 1
                 }
             }
         ];
@@ -170,20 +237,20 @@ router.get('/hotels/kowloon/total-price-per-month', async (req, res) => {
             },
             {
                 $group: {
-                    _id: "$month",
+                    _id: "$scraped_month",
                     totalPrice: { $sum: "$price" }
                 }
             },
             {
                 $project: {
                     _id: 0,
-                    month: "$_id",
+                    scraped_month: "$_id",
                     totalPrice: 1
                 }
             },
             {
                 $sort: {
-                    month: 1
+                    scraped_month: 1
                 }
             }
         ];
@@ -225,20 +292,20 @@ router.get('/hotels/tsimshatsui/total-price-per-month', async (req, res) => {
             },
             {
                 $group: {
-                    _id: "$month",
+                    _id: "$scraped_month",
                     totalPrice: { $sum: "$price" }
                 }
             },
             {
                 $project: {
                     _id: 0,
-                    month: "$_id",
+                    scraped_month: "$_id",
                     totalPrice: 1
                 }
             },
             {
                 $sort: {
-                    month: 1
+                    scraped_month: 1
                 }
             }
         ];
@@ -279,20 +346,20 @@ router.get('/hotels/yautsimmong/total-price-per-month', async (req, res) => {
             },
             {
                 $group: {
-                    _id: "$month",
+                    _id: "$scraped_month",
                     totalPrice: { $sum: "$price" }
                 }
             },
             {
                 $project: {
                     _id: 0,
-                    month: "$_id",
+                    scraped_month: "$_id",
                     totalPrice: 1
                 }
             },
             {
                 $sort: {
-                    month: 1
+                    scraped_month: 1
                 }
             }
         ];
@@ -311,7 +378,7 @@ router.get('/average-price-per-month', async (req, res) => {
         const prices = await collection.aggregate([
             {
                 $group: {
-                    _id: "$month",
+                    _id: "$scraped_month",
                     avgPrice: { $avg: "$price" }
                 }
             },
@@ -322,7 +389,7 @@ router.get('/average-price-per-month', async (req, res) => {
 
         // Convert _id to month and round avgPrice to 2 decimal places
         const result = prices.map(({ _id, avgPrice }) => ({
-            month: _id,
+            scraped_month: _id,
             avgPrice: Math.round(avgPrice * 100) / 100
         }));
 

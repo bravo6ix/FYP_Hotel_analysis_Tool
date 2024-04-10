@@ -128,7 +128,7 @@ import StatsCard from '@/components/Cards/StatsCard';
 
 // Tables
 import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-import PageVisitsTable from './Dashboard/PageVisitsTable';
+import HongKongIsland from './Dashboard/HongKongIsland';
 
 export default {
   components: {
@@ -136,7 +136,7 @@ export default {
     BarChart,
     BaseProgress,
     StatsCard,
-    PageVisitsTable,
+    HongKongIsland,
     SocialTrafficTable
   },
   data() {
@@ -175,8 +175,8 @@ export default {
         datasets: [
           {
             label: 'Total Price',
-            data: months.map(month => {
-              const item = data.find(item => item.month === month);
+            data: months.map(scraped_month => {
+              const item = data.find(item => item.scraped_month === scraped_month);
               return item ? item.totalPrice : 0;
             })
           }
@@ -195,7 +195,7 @@ export default {
             normal: {
               fontSize: function (data) {
                 // set the font size based on the value
-                return data.value;
+                return 10 + data.value;
               }
             }
           },

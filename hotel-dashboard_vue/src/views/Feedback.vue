@@ -5,35 +5,6 @@
         <!-- Card stats -->
         <b-row>
           <b-col xl="3" md="6">
-            <stats-card title="Total traffic" type="gradient-red" sub-title="350,897" icon="ni ni-active-40" class="mb-4">
-
-              <template slot="footer">
-                <span class="text-success mr-2">3.48%</span>
-                <span class="text-nowrap">Since last month</span>
-              </template>
-            </stats-card>
-          </b-col>
-          <b-col xl="3" md="6">
-            <stats-card title="Total traffic" type="gradient-orange" sub-title="2,356" icon="ni ni-chart-pie-35"
-              class="mb-4">
-
-              <template slot="footer">
-                <span class="text-success mr-2">12.18%</span>
-                <span class="text-nowrap">Since last month</span>
-              </template>
-            </stats-card>
-          </b-col>
-          <b-col xl="3" md="6">
-            <stats-card title="Sales" type="gradient-green" sub-title="924" icon="ni ni-money-coins" class="mb-4">
-
-              <template slot="footer">
-                <span class="text-danger mr-2">5.72%</span>
-                <span class="text-nowrap">Since last month</span>
-              </template>
-            </stats-card>
-
-          </b-col>
-          <b-col xl="3" md="6">
             <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
               class="mb-4">
 
@@ -44,15 +15,17 @@
             </stats-card>
           </b-col>
 
-          <b-col>
-            <stats-card title="Total Hotel List" type="gradient-info" sub-title="49,65%" class="mb-4">
-              <template>
-                <span class="text-nowrap">Hotel List</span>
-                <div ref="wordCloud" style="width: 600px;height:400px;"></div>
-              </template>
-            </stats-card>
+          <!-- new alter for avg price change -->
+          <b-col xl="3" md="6">
           </b-col>
-
+          <b-col>
+          <stats-card title="Total Hotel List" type="gradient-info" sub-title="49,65%" class="mb-4">
+            <template>
+              <span class="text-nowrap">Comment</span>
+              <div ref="wordCloud" style="width: 600px;height:400px;"></div>
+            </template>
+          </stats-card>
+        </b-col>
         </b-row>
       </base-header>
 
@@ -73,6 +46,7 @@
                       <span class="d-none d-md-block">Month</span>
                       <span class="d-md-none">M</span>
                     </b-nav-item>
+
                   </b-nav>
                 </b-col>
               </b-row>
@@ -119,8 +93,6 @@
   import * as chartConfigs from '@/components/Charts/config';
   import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
-  import * as echarts from 'echarts';
-  import 'echarts-wordcloud';
 
   // Components
   import BaseProgress from '@/components/BaseProgress';
@@ -128,7 +100,7 @@
 
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-  import TsimShaTsui from './Dashboard/TsimShaTsui';
+  import OverAll from './Dashboard/OverAll';
 
   export default {
     components: {
@@ -136,19 +108,34 @@
       BarChart,
       BaseProgress,
       StatsCard,
-      TsimShaTsui,
+      OverAll,
       SocialTrafficTable
     },
     data() {
       return {
-        wordCloudChart: null,
-        wordCloudData: [],
         bigLineChart: {
+          // allData: [
+          //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
+          //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
+          // ],
+          // activeIndex: 0,
           allData: [],
           chartData: null,
           activeIndex: 0,
           extraOptions: null,
+
+          // chartData: {
+          //   datasets: [
+          //     {
+          //       label: 'Performance',
+          //       data: [0, 20, 10, 30, 15, 40, 20, 60, 60],
+          //     }
+          //   ],
+          //   labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          // },
+          // extraOptions: chartConfigs.blueChartOptions,
         },
+        priceDifference: null, // new property
         redBarChart: {
           chartData: {
             labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -157,59 +144,91 @@
               data: [25, 20, 30, 22, 17, 29]
             }]
           },
-          wordCloudChart: null,
           extraOptions: chartConfigs.blueChartOptions
-        }
+        },
+        visits:[],
       };
     },
 
-    async created() {
-      try {
-        const response = await axios.get('http://localhost:3001/api/services/hotels/tsimshatsui/total-price-per-month');
-        const response2 = await axios.get('http://localhost:3001/api/services/hotels/tsimshatsui');
+    // methods: {
+    //   initBigChart(index) {
+    //     let chartData = {
+    //       datasets: [
+    //         {
+    //           label: 'Performance',
+    //           data: this.bigLineChart.allData[index]
+    //         }
+    //       ],
+    //       labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    //     };
+    //     this.bigLineChart.chartData = chartData;
+    //     this.bigLineChart.activeIndex = index;
+    //   },
 
-        // response 1
+    // methods: {
+    //   initBigChart() {
+    //     const labels = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    //     let chartData = {
+    //       datasets: [{
+    //         label: 'Performance',
+    //         data: this.bigLineChart.allData.map(item => item.totalAmount)
+    //       }],
+    //       labels: this.bigLineChart.allData.map(item => item.month),
+    //     };
+    //     this.bigLineChart.chartData = chartData;
+    //   },
+    // },
+    // ------------------------------------------
+
+    async created() {
+      // try {
+      //   const response = await axios.get('http://localhost:3001/api/services/month-sum-price');
+      //   this.bigLineChart.allData = response.data;
+      //   this.initBigChart();
+      // } catch (error) {
+      //   console.error('Error fetching data:', error);
+      // };
+      try {
+        const response = await axios.get('http://localhost:3001/api/services/average-price-per-month');
         const data = response.data;
+
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         this.bigLineChart.chartData = {
           datasets: [
             {
-              label: 'Total Price',
-              data: months.map(scraped_month => {
-                const item = data.find(item => item.scraped_month === scraped_month);
-                return item ? item.totalPrice : 0;
+              label: 'Average Price',
+              data: months.map(month => {
+                const item = data.find(item => item.month === month);
+                return item ? item.avgPrice : 0;
               })
             }
           ],
           labels: months
         };
+        // jan vs feb
+        const janData = data.find(item => item.month === 'Jan');
+        const febData = data.find(item => item.month === 'Feb');
+        if (janData && febData) {
+          this.priceIncrease = ((febData.avgPrice - janData.avgPrice) / janData.avgPrice) * 100;
+          this.priceDifference = febData.avgPrice - janData.avgPrice;
+        }
+        this.initBigChart();
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      };
 
-        // response 2
-        this.wordCloudData = response2.data;
-        this.wordCloudChart = echarts.init(this.$refs.wordCloud);
-        this.wordCloudChart.setOption({
-          series: [{
-            type: 'wordCloud',
-            data: this.wordCloudData,
-            textStyle: {
-              normal: {
-                fontSize: function (data) {
-                  // set the font size based on the value
-                  return data.value;
-                }
-              }
-            },
-            rotationRange: [0,0],
-          }]
-        });
+      // table
+      try {
+        const response = await axios.get('http://localhost:3001/api/services/hotels/table');
+        this.visits = response.data;
       } catch (error) {
         console.error('Error fetching data:', error);
       };
     },
-
     mounted() {
-      // Resize the wordcloud chart
-      this.wordCloudChart.resize();
+      if (!this.bigLineChart.allData.length) {
+        this.initBigChart();
+      }
     },
   };
   </script>

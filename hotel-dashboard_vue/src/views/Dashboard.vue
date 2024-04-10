@@ -94,7 +94,7 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col xl="8" class="mb-5 mb-xl-0">
-          <page-visits-table></page-visits-table>
+          <hotel-visits-table></hotel-visits-table>
         </b-col>
         <!-- <b-col xl="4" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
@@ -119,6 +119,7 @@ import StatsCard from '@/components/Cards/StatsCard';
 
 // Tables
 import SocialTrafficTable from './Dashboard/SocialTrafficTable';
+import OverAll from './Dashboard/OverAll';
 import PageVisitsTable from './Dashboard/PageVisitsTable';
 
 export default {
@@ -127,8 +128,9 @@ export default {
     BarChart,
     BaseProgress,
     StatsCard,
-    PageVisitsTable,
-    SocialTrafficTable
+    OverAll,
+    SocialTrafficTable,
+    PageVisitsTable
   },
   data() {
     return {
@@ -164,7 +166,8 @@ export default {
           }]
         },
         extraOptions: chartConfigs.blueChartOptions
-      }
+      },
+
     };
   },
 
@@ -215,8 +218,8 @@ export default {
         datasets: [
           {
             label: 'Average Price',
-            data: months.map(month => {
-              const item = data.find(item => item.month === month);
+            data: months.map(scraped_month => {
+              const item = data.find(item => item.scraped_month === scraped_month);
               return item ? item.avgPrice : 0;
             })
           }
@@ -224,13 +227,21 @@ export default {
         labels: months
       };
       // jan vs feb
-      const janData = data.find(item => item.month === 'Jan');
-      const febData = data.find(item => item.month === 'Feb');
+      const janData = data.find(item => item.scraped_month === 'Jan');
+      const febData = data.find(item => item.scraped_month === 'Feb');
       if (janData && febData) {
         this.priceIncrease = ((febData.avgPrice - janData.avgPrice) / janData.avgPrice) * 100;
         this.priceDifference = febData.avgPrice - janData.avgPrice;
       }
       this.initBigChart();
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    };
+
+    // table
+    try {
+      const response = await axios.get('http://localhost:3001/api/services/hotels/table');
+      this.visits = response.data;
     } catch (error) {
       console.error('Error fetching data:', error);
     };

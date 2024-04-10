@@ -13,6 +13,15 @@
         </sidebar-item>
 
         <sidebar-item
+          :link="{
+            name: 'Feedback',
+            path: '/feedback',
+            icon: 'ni ni-compass-04  text-purple',
+          }"
+        >
+        </sidebar-item>
+
+        <sidebar-item
             :link="{
               name: 'Hong Kong Island',
               path: '/hongkongisland',
@@ -73,13 +82,13 @@
                 }">
         </sidebar-item> -->
 
-        <sidebar-item
+        <!-- <sidebar-item
                 :link="{
                   name: 'Tables',
                   path: '/tables',
                   icon: 'ni ni-bullet-list-67 text-red'
                 }">
-        </sidebar-item>
+        </sidebar-item> -->
 
         <!-- <sidebar-item
                   :link="{

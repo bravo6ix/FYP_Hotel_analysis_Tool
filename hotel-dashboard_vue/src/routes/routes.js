@@ -18,6 +18,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "demo" */ '../views/Dashboard.vue')
       },
       {
+        path: '/feedback',
+        name: 'feedback',
+        component: () => import(/* webpackChunkName: "demo" */ '../views/Feedback.vue')
+      },
+      {
         path: '/hongkongisland',
         name: 'hongkongisland',
         component: () => import(/* webpackChunkName: "demo" */ '../views/HongKongIsland.vue')
@@ -52,11 +57,11 @@ const routes = [
         name: 'maps',
         component: () => import(/* webpackChunkName: "demo" */ '../views/GoogleMaps.vue')
       },
-      {
-        path: '/tables',
-        name: 'tables',
-        component: () => import(/* webpackChunkName: "demo" */ '../views/RegularTables.vue')
-      }
+      // {
+      //   path: '/tables',
+      //   name: 'tables',
+      //   component: () => import(/* webpackChunkName: "demo" */ '../views/RegularTables.vue')
+      // }
     ]
   },
   {
