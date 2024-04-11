@@ -14,19 +14,28 @@
 
     <el-table class="table-responsive table" :data="sortedData" @sort-change="handleSort"
       header-row-class-name="thead-light">
+
       <el-table-column label="Hotel Name" min-width="130px" prop="hotel" sortable="custom">
         <template v-slot="{ row }">
           <div class="font-weight-600">{{ row.hotel }}</div>
         </template>
       </el-table-column>
-      <el-table-column label="Count" min-width="70px" prop="count" sortable="custom">
+
+      <el-table-column label="Count" min-width="150px" prop="count" sortable="custom">
+
       </el-table-column>
       <el-table-column label="District" min-width="120px" prop="district" sortable="custom">
       </el-table-column>
 
-      <el-table-column label="Rating" min-width="90px" prop="rating" sortable="custom">
+      <el-table-column label="Rating" min-width="100px" prop="rating" sortable="custom">
         <template v-slot="{ row }">
           {{ row.rating }}
+        </template>
+      </el-table-column>
+
+      <el-table-column label="Reviews" min-width="100px" prop="views" sortable="custom">
+        <template v-slot="{ row }">
+          {{ row.views }}
         </template>
       </el-table-column>
     </el-table>
@@ -55,12 +64,13 @@ export default {
   },
   async created() {
     try {
-      const response = await axios.get('http://localhost:3001/api/services/hotels/table');
+      const response = await axios.get('http://localhost:3001/api/services/hotels/district/HongKongIsland');
       this.tableData = response.data.map(item => ({
         hotel: item.hotel_name,
         count: item.count.toString(),
         district: item.district,
-        rating: item.rating.toFixed(1)
+        rating: item.rating.toFixed(1),
+        views: item.views.toFixed()
       }));
     } catch (error) {
       console.error(error);
@@ -75,6 +85,14 @@ export default {
           if (a[prop] < b[prop]) return order === 'ascending' ? -1 : 1;
           if (a[prop] > b[prop]) return order === 'ascending' ? 1 : -1;
           return 0;
+
+          if (prop === 'views') {
+            aValue = Number(aValue);
+            bValue = Number(bValue);
+          }
+
+          if (aValue < bValue) return order === 'ascending' ? -1 : 1;
+          if (aValue > bValue) return order === 'ascending' ? 1 : -1;
         });
       }
       return data;

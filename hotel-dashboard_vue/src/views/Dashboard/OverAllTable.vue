@@ -29,6 +29,12 @@
           {{ row.rating }}
         </template>
       </el-table-column>
+
+      <el-table-column label="Reviews" min-width="100px" prop="views" sortable="custom">
+        <template v-slot="{ row }">
+          {{ row.views }}
+        </template>
+      </el-table-column>
     </el-table>
   </b-card>
 </template>
@@ -60,7 +66,8 @@ export default {
         hotel: item.hotel_name,
         count: item.count.toString(),
         district: item.district,
-        rating: item.rating.toFixed(1)
+        rating: item.rating.toFixed(1),
+        views: item.views.toString()
       }));
     } catch (error) {
       console.error(error);

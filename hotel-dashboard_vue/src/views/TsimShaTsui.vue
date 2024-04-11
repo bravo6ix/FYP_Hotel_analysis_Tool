@@ -5,52 +5,52 @@
         <!-- Card stats -->
         <b-row>
           <b-col xl="3" md="6">
-            <stats-card title="Total traffic" type="gradient-red" sub-title="350,897" icon="ni ni-active-40" class="mb-4">
+            <!-- <stats-card title="Total traffic" type="gradient-red" sub-title="350,897" icon="ni ni-active-40" class="mb-4">
 
               <template slot="footer">
                 <span class="text-success mr-2">3.48%</span>
                 <span class="text-nowrap">Since last month</span>
               </template>
-            </stats-card>
+            </stats-card> -->
           </b-col>
           <b-col xl="3" md="6">
-            <stats-card title="Total traffic" type="gradient-orange" sub-title="2,356" icon="ni ni-chart-pie-35"
+            <!-- <stats-card title="Total traffic" type="gradient-orange" sub-title="2,356" icon="ni ni-chart-pie-35"
               class="mb-4">
 
               <template slot="footer">
                 <span class="text-success mr-2">12.18%</span>
                 <span class="text-nowrap">Since last month</span>
               </template>
-            </stats-card>
+            </stats-card> -->
           </b-col>
           <b-col xl="3" md="6">
-            <stats-card title="Sales" type="gradient-green" sub-title="924" icon="ni ni-money-coins" class="mb-4">
+            <!-- <stats-card title="Sales" type="gradient-green" sub-title="924" icon="ni ni-money-coins" class="mb-4">
 
               <template slot="footer">
                 <span class="text-danger mr-2">5.72%</span>
                 <span class="text-nowrap">Since last month</span>
               </template>
-            </stats-card>
+            </stats-card> -->
 
           </b-col>
           <b-col xl="3" md="6">
-            <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
+            <!-- <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
               class="mb-4">
 
               <template slot="footer">
                 <span class="text-success mr-2">54.8%</span>
                 <span class="text-nowrap">Since last month</span>
               </template>
-            </stats-card>
+            </stats-card> -->
           </b-col>
 
           <b-col>
-            <stats-card title="Total Hotel List" type="gradient-info" sub-title="49,65%" class="mb-4">
+            <!-- <stats-card title="Total Hotel List" type="gradient-info" sub-title="49,65%" class="mb-4">
               <template>
                 <span class="text-nowrap">Hotel List</span>
                 <div ref="wordCloud" style="width: 600px;height:400px;"></div>
               </template>
-            </stats-card>
+            </stats-card> -->
           </b-col>
 
         </b-row>
@@ -83,7 +83,7 @@
           </b-col>
 
           <b-col xl="4" class="mb-5 mb-xl-0">
-            <card header-classes="bg-transparent">
+            <!-- <card header-classes="bg-transparent">
               <b-row align-v="center" slot="header">
                 <b-col>
                   <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
@@ -93,7 +93,7 @@
 
               <bar-chart :height="350" ref="barChart" :chart-data="redBarChart.chartData">
               </bar-chart>
-            </card>
+            </card> -->
           </b-col>
         </b-row>
         <!-- End charts-->
@@ -101,7 +101,7 @@
         <!--Tables-->
         <b-row class="mt-5">
           <b-col xl="8" class="mb-5 mb-xl-0">
-            <page-visits-table></page-visits-table>
+            <tsim-sha-tsui-table></tsim-sha-tsui-table>
           </b-col>
           <!-- <b-col xl="4" class="mb-5 mb-xl-0">
             <social-traffic-table></social-traffic-table>
@@ -128,16 +128,18 @@
 
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-  import TsimShaTsui from './Dashboard/TsimShaTsui';
-
+  // import PageVisitsTable from './Dashboard/PageVisitsTable';
+  import TsimShaTsuiTable from './Dashboard/TsimShaTsuiTable';
   export default {
     components: {
       LineChart,
       BarChart,
       BaseProgress,
       StatsCard,
-      TsimShaTsui,
-      SocialTrafficTable
+      // PageVisitsTable,
+      SocialTrafficTable,
+      TsimShaTsuiTable,
+
     },
     data() {
       return {

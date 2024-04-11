@@ -88,6 +88,112 @@ router.get('/hotels/district/HongKongIsland', async function (req, res) {
     }
 });
 
+// Kowloon City district table
+router.get('/hotels/district/Kowloon', async function (req, res) {
+    try {
+        const district = "Kowloon City";
+        const result = await db.collection("booking_price").aggregate([
+            {
+                $match: { district: district }
+            },
+            {
+                $group: {
+                    _id: { hotel_name: "$hotel_name", district: "$district" },
+                    count: { $sum: 1 },
+                    rating: { $avg: "$rating" },
+                    views: { $sum: "$views" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    hotel_name: "$_id.hotel_name",
+                    district: "$_id.district",
+                    count: 1,
+                    rating: 1,
+                    views: 1
+                }
+            }
+        ]).toArray();
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching hotel data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Tsim Sha Tsui district table
+router.get('/hotels/district/Tsimshatsui', async function (req, res) {
+    try {
+        const district = "Tsim Sha Tsui";
+        const result = await db.collection("booking_price").aggregate([
+            {
+                $match: { district: district }
+            },
+            {
+                $group: {
+                    _id: { hotel_name: "$hotel_name", district: "$district" },
+                    count: { $sum: 1 },
+                    rating: { $avg: "$rating" },
+                    views: { $sum: "$views" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    hotel_name: "$_id.hotel_name",
+                    district: "$_id.district",
+                    count: 1,
+                    rating: 1,
+                    views: 1
+                }
+            }
+        ]).toArray();
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching hotel data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+// Tsim Sha Tsui district table
+router.get('/hotels/district/YautSimMong', async function (req, res) {
+    try {
+        const district = "Yau Tsim Mong";
+        const result = await db.collection("booking_price").aggregate([
+            {
+                $match: { district: district }
+            },
+            {
+                $group: {
+                    _id: { hotel_name: "$hotel_name", district: "$district" },
+                    count: { $sum: 1 },
+                    rating: { $avg: "$rating" },
+                    views: { $sum: "$views" }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    hotel_name: "$_id.hotel_name",
+                    district: "$_id.district",
+                    count: 1,
+                    rating: 1,
+                    views: 1
+                }
+            }
+        ]).toArray();
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error fetching hotel data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
 /* GET booking per sum by month with price data */
 router.get('/month-sum-price', async function (req, res, next) {
     try {

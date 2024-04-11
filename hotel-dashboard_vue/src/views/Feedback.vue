@@ -5,14 +5,14 @@
         <!-- Card stats -->
         <b-row>
           <b-col xl="3" md="6">
-            <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
+            <!-- <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
               class="mb-4">
 
               <template slot="footer">
                 <span class="text-success mr-2">54.8%</span>
                 <span class="text-nowrap">Since last month</span>
               </template>
-            </stats-card>
+            </stats-card> -->
           </b-col>
 
           <!-- new alter for avg price change -->
@@ -56,7 +56,7 @@
             </card>
           </b-col>
 
-          <b-col xl="4" class="mb-5 mb-xl-0">
+          <!-- <b-col xl="4" class="mb-5 mb-xl-0">
             <card header-classes="bg-transparent">
               <b-row align-v="center" slot="header">
                 <b-col>
@@ -68,15 +68,17 @@
               <bar-chart :height="350" ref="barChart" :chart-data="redBarChart.chartData">
               </bar-chart>
             </card>
-          </b-col>
+          </b-col> -->
         </b-row>
         <!-- End charts-->
 
         <!--Tables-->
         <b-row class="mt-5">
-          <b-col xl="8" class="mb-5 mb-xl-0">
-            <page-visits-table></page-visits-table>
-          </b-col>
+          <!-- <b-col xl="8" class="mb-5 mb-xl-0">
+            <over-all-table></over-all-table>
+          </b-col> -->
+
+
           <!-- <b-col xl="4" class="mb-5 mb-xl-0">
             <social-traffic-table></social-traffic-table>
           </b-col> -->
@@ -100,7 +102,7 @@
 
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-  import OverAll from './Dashboard/OverAll';
+  import OverAllTable from './Dashboard/OverAllTable';
 
   export default {
     components: {
@@ -108,8 +110,10 @@
       BarChart,
       BaseProgress,
       StatsCard,
-      OverAll,
-      SocialTrafficTable
+      OverAllTable,
+      SocialTrafficTable,
+
+      OverAllTable
     },
     data() {
       return {

@@ -5,27 +5,13 @@
       <!-- Card stats -->
       <b-row>
         <b-col xl="3" md="6">
-          <stats-card title="Total traffic" type="gradient-red" sub-title="350,897" icon="ni ni-active-40" class="mb-4">
+          <!-- <stats-card title="Total traffic" type="gradient-red" sub-title="350,897" icon="ni ni-active-40" class="mb-4">
 
             <template slot="footer">
               <span class="text-success mr-2">3.48%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
-          </stats-card>
-        </b-col>
-        <b-col xl="3" md="6">
-          <stats-card title="Total traffic" type="gradient-orange" sub-title="2,356" icon="ni ni-chart-pie-35"
-            class="mb-4">
-
-            <template slot="footer">
-              <span class="text-success mr-2">12.18%</span>
-              <span class="text-nowrap">Since last month</span>
-            </template>
-          </stats-card>
-        </b-col>
-
-        <!-- new alter for avg price change -->
-        <b-col xl="3" md="6">
+          </stats-card> -->
           <stats-card title="Price increase from January to February" type="gradient-green" :sub-title="priceDifference"
             icon="ni ni-money-coins" class="mb-4">
             <template slot="footer">
@@ -33,17 +19,31 @@
               <span class="text-nowrap">Since last month</span>
             </template>
           </stats-card>
+        </b-col>
+        <b-col xl="3" md="6">
+          <!-- <stats-card title="Total traffic" type="gradient-orange" sub-title="2,356" icon="ni ni-chart-pie-35"
+            class="mb-4">
+
+            <template slot="footer">
+              <span class="text-success mr-2">12.18%</span>
+              <span class="text-nowrap">Since last month</span>
+            </template>
+          </stats-card> -->
+        </b-col>
+
+        <!-- new alter for avg price change -->
+        <b-col xl="3" md="6">
+
 
         </b-col>
         <b-col xl="3" md="6">
-          <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
+          <!-- <stats-card title="Performance" type="gradient-info" sub-title="49,65%" icon="ni ni-chart-bar-32"
             class="mb-4">
-
             <template slot="footer">
               <span class="text-success mr-2">54.8%</span>
               <span class="text-nowrap">Since last month</span>
             </template>
-          </stats-card>
+          </stats-card> -->
         </b-col>
       </b-row>
     </base-header>
@@ -76,7 +76,7 @@
         </b-col>
 
         <b-col xl="4" class="mb-5 mb-xl-0">
-          <card header-classes="bg-transparent">
+          <!-- <card header-classes="bg-transparent">
             <b-row align-v="center" slot="header">
               <b-col>
                 <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
@@ -86,7 +86,7 @@
 
             <bar-chart :height="350" ref="barChart" :chart-data="redBarChart.chartData">
             </bar-chart>
-          </card>
+          </card> -->
         </b-col>
       </b-row>
       <!-- End charts-->
@@ -94,7 +94,7 @@
       <!--Tables-->
       <b-row class="mt-5">
         <b-col xl="8" class="mb-5 mb-xl-0">
-          <hotel-visits-table></hotel-visits-table>
+          <over-all-table></over-all-table>
         </b-col>
         <!-- <b-col xl="4" class="mb-5 mb-xl-0">
           <social-traffic-table></social-traffic-table>
@@ -119,8 +119,8 @@ import StatsCard from '@/components/Cards/StatsCard';
 
 // Tables
 import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-import OverAll from './Dashboard/OverAll';
-import PageVisitsTable from './Dashboard/PageVisitsTable';
+// import PageVisitsTable from './Dashboard/PageVisitsTable';
+import OverAllTable from './Dashboard/OverAllTable.vue';
 
 export default {
   components: {
@@ -128,9 +128,9 @@ export default {
     BarChart,
     BaseProgress,
     StatsCard,
-    OverAll,
     SocialTrafficTable,
-    PageVisitsTable
+    // PageVisitsTable,
+    OverAllTable
   },
   data() {
     return {
