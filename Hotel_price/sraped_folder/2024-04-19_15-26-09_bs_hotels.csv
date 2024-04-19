@@ -1,0 +1,42 @@
+hotel_name,district,price,rating,scraped_month,views,target_start_week,target_start_month,target_start_month_day,target_end_week,target_end_month,target_end_month_day
+"Page148, Page Hotels",Yau Tsim Mong,4966,8.6,Apr,2878,N/A,N/A,N/A,N/A,N/A,N/A
+JW Marriott Hotel Hong Kong,Hong Kong Island,8540,8.3,Apr,433,N/A,N/A,N/A,N/A,N/A,N/A
+Grand Hyatt Hong Kong,Hong Kong Island,7905,8.9,Apr,1086,N/A,N/A,N/A,N/A,N/A,N/A
+Harbour Grand Hong Kong,Hong Kong Island,4305,8.2,Apr,3918,N/A,N/A,N/A,N/A,N/A,N/A
+Four Seasons Hotel Hong Kong,Hong Kong Island,15600,9.4,Apr,307,N/A,N/A,N/A,N/A,N/A,N/A
+Conrad Hong Kong,Hong Kong Island,8585,8.2,Apr,458,N/A,N/A,N/A,N/A,N/A,N/A
+Renaissance Hong Kong Harbour View Hotel,Hong Kong Island,7500,8.1,Apr,743,N/A,N/A,N/A,N/A,N/A,N/A
+Hyatt Centric Victoria Harbour,Hong Kong Island,6690,8.2,Apr,1830,N/A,N/A,N/A,N/A,N/A,N/A
+"The Park Lane Hong Kong, a Pullman Hotel",Hong Kong Island,6471,8.0,Apr,1299,N/A,N/A,N/A,N/A,N/A,N/A
+"The Murray, Hong Kong, a Niccolo Hotel",Hong Kong Island,9040,8.9,Apr,309,N/A,N/A,N/A,N/A,N/A,N/A
+Ibis Hong Kong Central & Sheung Wan,Hong Kong Island,4566,7.8,Apr,2847,N/A,N/A,N/A,N/A,N/A,N/A
+Eaton HK,Yau Tsim Mong,5121,8.2,Apr,2820,N/A,N/A,N/A,N/A,N/A,N/A
+W Hong Kong,Yau Tsim Mong,11200,8.6,Apr,370,N/A,N/A,N/A,N/A,N/A,N/A
+The Langham Hong Kong,Yau Tsim Mong,8910,8.4,Apr,914,N/A,N/A,N/A,N/A,N/A,N/A
+The Ritz-Carlton Hong Kong,Yau Tsim Mong,13300,9.3,Apr,383,N/A,N/A,N/A,N/A,N/A,N/A
+"Gateway Hotel, Marco Polo",Yau Tsim Mong,7470,8.1,Apr,818,N/A,N/A,N/A,N/A,N/A,N/A
+The Peninsula Hong Kong,Yau Tsim Mong,10369,9.2,Apr,230,N/A,N/A,N/A,N/A,N/A,N/A
+"Holiday Inn Golden Mile, an IHG Hotel",Yau Tsim Mong,7088,8.2,Apr,2289,N/A,N/A,N/A,N/A,N/A,N/A
+Jen Hong Kong by Shangri-La,Hong Kong Island,6193,8.4,Apr,711,N/A,N/A,N/A,N/A,N/A,N/A
+Bishop Lei International House,Hong Kong Island,3341,7.9,Apr,1244,N/A,N/A,N/A,N/A,N/A,N/A
+Royal Park Hotel,Sha Tin,4905,8.0,Apr,2236,N/A,N/A,N/A,N/A,N/A,N/A
+Harbour Grand Kowloon,Kowloon City,5275,8.0,Apr,1739,N/A,N/A,N/A,N/A,N/A,N/A
+Hotel ICON,Yau Tsim Mong,8526,8.8,Apr,1756,N/A,N/A,N/A,N/A,N/A,N/A
+99 Bonham,Hong Kong Island,5421,8.3,Apr,504,N/A,N/A,N/A,N/A,N/A,N/A
+"InterContinental Grand Stanford Hong Kong, an IHG Hotel",Yau Tsim Mong,8280,8.1,Apr,1670,N/A,N/A,N/A,N/A,N/A,N/A
+"Island Shangri-La, Hong Kong",Hong Kong Island,9010,8.8,Apr,401,N/A,N/A,N/A,N/A,N/A,N/A
+"Mandarin Oriental, Hong Kong",Hong Kong Island,13800,9.1,Apr,353,N/A,N/A,N/A,N/A,N/A,N/A
+"Cordis, Hong Kong",Yau Tsim Mong,5895,8.5,Apr,2676,N/A,N/A,N/A,N/A,N/A,N/A
+"Kerry Hotel, Hong Kong",Kowloon City,7820,8.9,Apr,720,N/A,N/A,N/A,N/A,N/A,N/A
+The Pottinger Hong Kong,Hong Kong Island,7733,8.6,Apr,313,N/A,N/A,N/A,N/A,N/A,N/A
+"The Landmark Mandarin Oriental, Hong Kong",Hong Kong Island,11240,8.9,Apr,71,N/A,N/A,N/A,N/A,N/A,N/A
+Hotel Madera Hollywood,Hong Kong Island,6435,9.1,Apr,410,N/A,N/A,N/A,N/A,N/A,N/A
+"Kowloon Shangri-La, Hong Kong",Yau Tsim Mong,9537,8.6,Apr,1071,N/A,N/A,N/A,N/A,N/A,N/A
+Nina Hotel Causeway Bay,Hong Kong Island,4898,8.1,Apr,1185,N/A,N/A,N/A,N/A,N/A,N/A
+BEST WESTERN PLUS Hotel Hong Kong,Hong Kong Island,3968,7.2,Apr,2192,N/A,N/A,N/A,N/A,N/A,N/A
+Nina Hotel Island South,Southern,3401,8.2,Apr,277,N/A,N/A,N/A,N/A,N/A,N/A
+"Hyatt Regency Hong Kong, Sha Tin",Sha Tin,4356,8.2,Apr,1346,N/A,N/A,N/A,N/A,N/A,N/A
+Novotel Century Hong Kong,Hong Kong Island,5511,8.0,Apr,1233,N/A,N/A,N/A,N/A,N/A,N/A
+Courtyard by Marriott Hong Kong,Hong Kong Island,6500,8.4,Apr,272,N/A,N/A,N/A,N/A,N/A,N/A
+Gloucester Luk Kwok Hong Kong,Hong Kong Island,4752,8.2,Apr,526,N/A,N/A,N/A,N/A,N/A,N/A
+The Royal Garden,Yau Tsim Mong,6327,7.9,Apr,2097,N/A,N/A,N/A,N/A,N/A,N/A
